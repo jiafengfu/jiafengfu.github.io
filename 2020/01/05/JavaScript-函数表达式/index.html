@@ -143,7 +143,7 @@
     <div class="post-content ">
         <p>定义函数的方式：<br>（1）函数声明：函数声明提升；<br>（2）函数表达式：创建的函数是 匿名函数，在使用前必须先赋值。</p>
 <blockquote>
-<p><strong>函数声明提升</strong>（function declaration hoisting）：在执行代码之前会先读取函数声明。<br><strong>匿名函数</strong>（anonymous function）：匿名函数的 name 属性是空字符串。</p>
+<p><strong>函数声明提升</strong>（function declaration hoisting）：在执行代码之前会先读取函数声明。<br>&emsp;&emsp;<strong>匿名函数</strong>（anonymous function）：匿名函数的 name 属性是空字符串。</p>
 </blockquote>
 <p><br><br><br><br><br></p>
 <h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>递归函数：一个函数通过 <strong>名字</strong> 调用自身。<br><strong><code>arguments.callee</code></strong>  是一个 <strong>指向正在执行的函数的指针</strong>，因此可以用它来实现对函数的递归调用。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (num &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> num * <span class="built_in">arguments</span>.callee(num - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
