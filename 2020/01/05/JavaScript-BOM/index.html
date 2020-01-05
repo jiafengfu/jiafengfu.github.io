@@ -11,7 +11,7 @@
 
     <title>
         
-        JavaScript DOM - FU的博客 | FU&#39;s Blog
+        JavaScript BOM - FU的博客 | FU&#39;s Blog
         
     </title>
 
@@ -120,7 +120,7 @@
 
 <div class="post-container">
     <div class="post-title">
-        JavaScript DOM
+        JavaScript BOM
     </div>
 
     <div class="post-meta">
@@ -179,7 +179,7 @@
 </ul>
 <p>以下是一个包含框架的页面：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Frameset Example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">frameset</span> <span class="attr">rows</span>=<span class="string">"160,*"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">frame</span> <span class="attr">src</span>=<span class="string">"frame.htm"</span> <span class="attr">name</span>=<span class="string">"topFrame"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">frameset</span> <span class="attr">cols</span>=<span class="string">"50%,50%"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">frame</span> <span class="attr">src</span>=<span class="string">"anotherframe.htm"</span> <span class="attr">name</span>=<span class="string">"leftFrame"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">frame</span> <span class="attr">src</span>=<span class="string">"yetanotherframe.htm"</span> <span class="attr">name</span>=<span class="string">"rightFrame"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">frameset</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">frameset</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>在 <strong>最高层窗口</strong> 中，通过代码来访问上述代码中每个框架的不同方式如下：</p>
-<img src="/2020/01/05/JavaScript-DOM/窗口关系.png" title="窗口关系">
+<img src="/2020/01/05/JavaScript-BOM/窗口关系.png" title="窗口关系">
 <p><br></p>
 <h4 id="窗口位置"><a href="#窗口位置" class="headerlink" title="窗口位置"></a>窗口位置</h4><blockquote>
 <p>窗口相对于屏幕左边和上边的位置：</p>
@@ -264,7 +264,7 @@
 <h3 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a>location对象</h3><p>location 提供了与 <strong>当前窗口中加载的文档</strong> 有关的信息，还提供了一些导航功能。</p>
 <p>location 对象是很特别的一个对象，因为它既是window 对象的属性，也是document 对象的属性；换句话说，<code>window.location</code> 和 <code>document.location</code> 引用的是同一个对象。</p>
 <p><strong>location 对象的作用：</strong><br>（1）保存着当前文档的信息；<br>（2）它将URL 解析为独立的片段，让开发人员可以通过不同的属性访问这些片段</p>
-<p><img src="en-resource://database/631:1" alt="1553e212e5f94576dba0e8d40aaa45c1.png"><br><img src="/2020/01/05/JavaScript-DOM/location对象.png" title="location对象"></p>
+<p><img src="en-resource://database/631:1" alt="1553e212e5f94576dba0e8d40aaa45c1.png"><br><img src="/2020/01/05/JavaScript-BOM/location对象.png" title="location对象"></p>
 <p><br></p>
 <h4 id="查询字符串参数"><a href="#查询字符串参数" class="headerlink" title="查询字符串参数"></a>查询字符串参数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getQueryStringArgs</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//取得查询字符串并去掉开头的问号</span></span><br><span class="line">    <span class="keyword">var</span> qs = (location.search.length &gt; <span class="number">0</span> ? location.search.substring(<span class="number">1</span>) : <span class="string">""</span>),</span><br><span class="line">        <span class="comment">//保存数据的对象</span></span><br><span class="line">        args = &#123;&#125;,</span><br><span class="line">        <span class="comment">//取得每一项</span></span><br><span class="line">        items = qs.length ? qs.split(<span class="string">"&amp;"</span>) : [],</span><br><span class="line">        item = <span class="literal">null</span>,</span><br><span class="line">        name = <span class="literal">null</span>,</span><br><span class="line">        value = <span class="literal">null</span>,</span><br><span class="line">        <span class="comment">//在for 循环中使用</span></span><br><span class="line">        i = <span class="number">0</span>,</span><br><span class="line">        len = items.length;</span><br><span class="line">    <span class="comment">//逐个将每一项添加到args 对象中</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        item = items[i].split(<span class="string">"="</span>);</span><br><span class="line">        name = <span class="built_in">decodeURIComponent</span>(item[<span class="number">0</span>]);</span><br><span class="line">        value = <span class="built_in">decodeURIComponent</span>(item[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">if</span> (name.length) &#123;</span><br><span class="line">            args[name] = value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> args;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><br></p>

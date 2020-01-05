@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://fujiafeng.com/2020/01/05/JavaScript-BOM/</loc>
+    
+    <lastmod>2020-01-05T15:00:31.865Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://fujiafeng.com/2020/01/05/JavaScript-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</loc>
     
     <lastmod>2020-01-05T14:56:33.917Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://fujiafeng.com/2020/01/05/JavaScript-%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%A3%80%E6%B5%8B/</loc>
     
     <lastmod>2020-01-05T14:42:45.305Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://fujiafeng.com/2020/01/05/JavaScript-DOM/</loc>
-    
-    <lastmod>2020-01-05T14:41:30.830Z</lastmod>
     
   </url>
   
