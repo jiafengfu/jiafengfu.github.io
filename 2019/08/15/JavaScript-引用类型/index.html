@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="符佳凤的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        JavaScript 引用类型 - FU的博客 | FU&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Fashion passes ,   style remains. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Jiafeng Fu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Object-类型"><span class="toc-text">Object 类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Array-类型"><span class="toc-text">Array 类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#检测数组"><span class="toc-text">检测数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#转换方法"><span class="toc-text">转换方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈方法"><span class="toc-text">栈方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#队列方法"><span class="toc-text">队列方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重排序方法"><span class="toc-text">重排序方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作方法"><span class="toc-text">操作方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#位置方法"><span class="toc-text">位置方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迭代方法"><span class="toc-text">迭代方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#归并方法"><span class="toc-text">归并方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Date-类型"><span class="toc-text">Date 类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#日期格式化方法"><span class="toc-text">日期格式化方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#日期-时间组件方法"><span class="toc-text">日期/时间组件方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RegExp-类型"><span class="toc-text">RegExp 类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RegExp-实例属性"><span class="toc-text">RegExp 实例属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RegExp实例方法"><span class="toc-text">RegExp实例方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Function-类型"><span class="toc-text">Function 类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#没有重载"><span class="toc-text">没有重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数声明-与-函数表达式"><span class="toc-text">函数声明 与 函数表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作为值的函数"><span class="toc-text">作为值的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数内部属性"><span class="toc-text">函数内部属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数属性和方法"><span class="toc-text">函数属性和方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基本包装类型"><span class="toc-text">基本包装类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Boolean-类型"><span class="toc-text">Boolean 类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Number-类型"><span class="toc-text">Number 类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-类型"><span class="toc-text">String 类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#单体内置对象"><span class="toc-text">单体内置对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Global对象"><span class="toc-text">Global对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Math对象"><span class="toc-text">Math对象</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> Fashion passes ,   style remains. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        JavaScript 引用类型
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-08-15 00:29:01</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#JavaScript高级程序设计" title="JavaScript高级程序设计">JavaScript高级程序设计</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>在 ECMAScript 中，引用类型是一种数据结构，用于将数据和功能组织在一起。</p>
+<p><br></p>
+<h1 id="Object-类型"><a href="#Object-类型" class="headerlink" title="Object 类型"></a>Object 类型</h1><blockquote>
+<p>Object 是一个基础类型，其他所有类型都从Object 继承了基本的行为。</p>
+</blockquote>
+<p>创建 Object 实例有两种方式：</p>
+<ol>
+<li>使用 new 操作符后跟 Object 构造函数；</li>
+<li>使用对象字面量表示法（属性名可以使用字符串）。</li>
+</ol>
+<blockquote>
+<p>对象字面量表示法 也是向函数传递大量可选参数的首选方式；<br>最好的做法是 对那些必需值使用命名参数，而使用对象字面量来封装多个可选参数。</p>
+</blockquote>
+<p>访问对象属性：</p>
+<ol>
+<li>点表示法；</li>
+<li>方括号表示法（将要访问的属性以 <strong>字符串</strong> 的形式放在方括号中）。</li>
+</ol>
+<blockquote>
+<p>方括号语法的主要优点是可以通过 <strong>变量</strong> 来访问属性</p>
+</blockquote>
+<p><br><br><br><br><br></p>
+<h1 id="Array-类型"><a href="#Array-类型" class="headerlink" title="Array 类型"></a>Array 类型</h1><p>ECMAScript 数组与其他语言中数组的不同之处：</p>
+<ol>
+<li>ECMAScript 数组的每一项可以保存 <strong>任何类型</strong> 的数据；</li>
+<li>ECMAScript 数组的 <strong>大小</strong>是可以 <strong>动态调整</strong> 的。</li>
+</ol>
+<p>创建数组的基本方式有两种：</p>
+<ol>
+<li>使用 Array 构造函数；</li>
+<li>使用数组字面量表示法。</li>
+</ol>
+<p>在读取和设置数组的值时，要使用方括号并提供相应值的基于 0 的数字索引，方括号中的索引表示要访问的值。如果索引小于数组中的项数，则返回对应项的值；如果设置某个值的索引超过了数组现有项数，数组就会自动增加到该索引值加 1 的长度。数组最后一项的索引始终是 length-1。</p>
+<p>数组的项数保存在其 length 属性中，这个属性始终会返回 0 或更大的值。数组的 length 属性不是只读的，通过设置这个属性，可以从数组的末尾移除项或向数组中添加新项。</p>
+<h2 id="检测数组"><a href="#检测数组" class="headerlink" title="检测数组"></a>检测数组</h2><p>确定某个对象是不是数组：</p>
+<ol>
+<li><strong>value instanceof Array</strong>  （instanceof 操作符的问题在于，它假定只有一个全局执行环境。如果网页中包含多个框架，那实际上就存在两个以上不同的全局执行环境，从而存在两个以上不同版本的Array 构造函数）</li>
+<li><strong>Array.isArray( value )</strong>  方法 （确定某个值到底是不是数组，而不管它是在哪个全局执行环境中创建的）</li>
+</ol>
+<h2 id="转换方法"><a href="#转换方法" class="headerlink" title="转换方法"></a>转换方法</h2><ul>
+<li><strong>toLocaleString()</strong> ：创建一个数组值的以逗号分隔的字符串；为了取得每一项的值，调用的是每一项的toLocaleString()方法；</li>
+<li><strong>toString()</strong> ：返回由数组中每个值的字符串形式拼接而成的一个以逗号分隔的字符串；为了创建这个字符串会调用数组每一项的toString()方法；</li>
+<li><strong>valueOf()</strong> ：返回的还是数组。</li>
+</ul>
+<h2 id="栈方法"><a href="#栈方法" class="headerlink" title="栈方法"></a>栈方法</h2><p>LIFO 后进先出，推入 与 弹出 只发生在 <strong>栈顶</strong> 。</p>
+<ul>
+<li><strong>push() 方法</strong> ：推入，可以接收任意数量的参数，把它们逐个添加到数组末尾，并返回修改后数组的长度；</li>
+<li><strong>pop() 方法</strong> ：弹出，从数组末尾移除最后一项，减少数组的length 值，然后返回移除的项。</li>
+</ul>
+<h2 id="队列方法"><a href="#队列方法" class="headerlink" title="队列方法"></a>队列方法</h2><p>FIFO 先进先出，推入 发生在队尾，移除 发生在队列头部。</p>
+<ul>
+<li><strong>push() 方法</strong></li>
+<li><strong>shift() 方法</strong> ：移除数组中的第一个项并返回该项，同时将数组长度减1。</li>
+</ul>
+<blockquote>
+<p> <strong>unshift()方法</strong> ：在数组前端添加任意个项并返回新数组的长度</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>(); <span class="comment">//创建一个数组</span></span><br><span class="line"><span class="keyword">var</span> count = colors.unshift(<span class="string">"red"</span>, <span class="string">"green"</span>); <span class="comment">//推入两项</span></span><br><span class="line"><span class="comment">// unshift 插入顺序 与 参数顺序 一致，该语句得到的 colors == ["red", "green"];</span></span><br></pre></td></tr></table></figure>
+<h2 id="重排序方法"><a href="#重排序方法" class="headerlink" title="重排序方法"></a>重排序方法</h2><ul>
+<li><strong>reverse() 方法</strong> ：反序；</li>
+<li><strong>sort() 方法</strong> ：默认升序（会调用每个数组项的toString()转型方法，然后比较得到的字符串，以确定如何排序。即使数组中的每一项都是数值，sort()方法比较的也是字符串）。sort() 方法可以接收一个 <strong>比较函数</strong> 作为参数。</li>
+</ul>
+<blockquote>
+<ol>
+<li>比较函数接收两个参数，如果第一个参数应该位于第二个 <strong>之前</strong> 则返回一个 <strong>负数</strong> ，如果两个参数 <strong>相等</strong> 则返回 <strong>0</strong> ，如果第一个参数应该位于第二个 <strong>之后</strong> 则返回一个 <strong>正数</strong> ；</li>
+<li>对于 <strong>数值类型</strong> 或者其 <strong>valueOf() 方法会返回数值类型的对象类型</strong> ，可以使用一个更简单的比较函数。这个函数只要用 <strong>第二个值减第一个值</strong> 即可。</li>
+</ol>
+</blockquote>
+<h2 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h2><ul>
+<li><strong>concat() 方法</strong> ：先创建当前数组一个副本，然后将接收到的参数添加到这个副本的末尾，最后返回新构建的数组。</li>
+<li><strong>slice() 方法</strong> ：接受一或两个参数，即要返回项的 <strong>起始</strong> 和 <strong>结束</strong> 位置。在只有一个参数的情况下，slice()方法返回从该参数指定位置开始到当前数组末尾的所有项；如果有两个参数，该方法返回起始和结束位置之间的项（不包括结束位置的项）。</li>
+<li><strong>splice() 方法</strong>：主要用途是向数组的中部插入项，使用方式有如下三种：<ul>
+<li><strong>删除</strong> ：指定2 个参数 &lt;要删除的第一项的位置， 要删除的项数&gt;；</li>
+<li><strong>插入</strong> ：提供3 个参数 &lt;起始位置， 0（要删除的项数）<br>，要插入的项，…&gt;</li>
+<li><strong>替换</strong> ：指定3 个参数 &lt;起始位置，要删除的项数，要插入的任意数量的项&gt;；始终都会返回一个数组，该数组中包含从原始数组中删除的项</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>如果slice()方法的参数中有一个负数，则用数组长度加上该数来确定相应的位置；如果结束位置小于起始位置，则返回空数组。</p>
+</blockquote>
+<h2 id="位置方法"><a href="#位置方法" class="headerlink" title="位置方法"></a>位置方法</h2><ul>
+<li>indexOf()  ：从数组的开头（位置0）开始向后查找；</li>
+<li>lastIndexOf() ：从数组的末尾开始向前查找。</li>
+</ul>
+<p>这两个方法都</p>
+<ol>
+<li>接收两个参数：<strong>要查找的项</strong> 和（可选的）表示<strong>查找起点位置</strong>的索引；</li>
+<li>都返回要查找的项在数组中的位置，或者在没找到的情况下返回 -1；</li>
+<li>在比较第一个参数与数组中的每一项时，会使用 <strong>全等</strong> 操作符</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123; <span class="attr">name</span>: <span class="string">"Nicholas"</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> people = [&#123; <span class="attr">name</span>: <span class="string">"Nicholas"</span> &#125;];</span><br><span class="line"><span class="keyword">var</span> morePeople = [person];</span><br><span class="line">alert(people.indexOf(person)); <span class="comment">//-1</span></span><br><span class="line">alert(morePeople.indexOf(person)); <span class="comment">//0</span></span><br><span class="line"><span class="comment">/* 	在这里查找的时候，所比较的是对象。</span></span><br><span class="line"><span class="comment">*	在 people 这个数组中的这个 &#123;name:“Nicholas”&#125; 和 person 并不是同一个对象，而morepeole 中和 person 是同一个对象（因为直接引用了它）。</span></span><br><span class="line"><span class="comment">*	因此第一个会返回 -1（无法找到），第二个是 0。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="迭代方法"><a href="#迭代方法" class="headerlink" title="迭代方法"></a>迭代方法</h2><p>数组中定义了5 个迭代方法，分别对 <strong>数组中的每一项</strong> 运行给定函数：</p>
+<ul>
+<li><strong>every()</strong> ：如果该函数对<strong>每一项都返回true</strong>，则返回true；</li>
+<li><strong>some()</strong> ：如果该函数对<strong>任一项返回true</strong>，则返回true；</li>
+<li><strong>filter()</strong> ：返回该函数会返回true 的项组成的<strong>数组</strong> （用于 查询符合某些条件的所有数组项）；</li>
+<li><strong>map()</strong> ：返回每次函数调用的结果组成的<strong>数组</strong>；</li>
+<li><strong>forEach()</strong> ：没有返回值。</li>
+</ul>
+<p>每个方法都接收两个参数：</p>
+<ol>
+<li>要在每一项上运行的 <strong>函数</strong>；</li>
+<li>（可选的）运行该函数的作用域对象——影响this 的值。</li>
+</ol>
+<blockquote>
+<p>传入这些方法中的函数会接收三个参数：</p>
+<ol>
+<li>数组项的值；</li>
+<li>该项在数组中的位置；</li>
+<li>数组对象本身。</li>
+</ol>
+</blockquote>
+<h2 id="归并方法"><a href="#归并方法" class="headerlink" title="归并方法"></a>归并方法</h2><p>ECMAScript 定义了两个归并数组的方法，可以迭代数组的所有项，然后构建一个最终返回的值：</p>
+<ul>
+<li><strong>reduce() 方法</strong> ：从数组的第一项开始，逐个遍历到最后；</li>
+<li><strong>reduceRight() 方法</strong> ： 从数组的最后一项开始，向前遍历到第一项。</li>
+</ul>
+<p>这两个方法都接收两个参数：</p>
+<ol>
+<li>一个在每一项上 <strong>调用的函数</strong>；</li>
+<li>（可选的）作为归并基础的初始值。</li>
+</ol>
+<blockquote>
+<p>传给reduce()和reduceRight()的函数接收4 个参数：</p>
+<ol>
+<li>前一个值；</li>
+<li>当前值；</li>
+<li>项的索引；</li>
+<li>数组对象。<br><br></li>
+</ol>
+<p>这个函数返回的任何值都会作为 <strong>第一个参数</strong> 自动传给下一项。<strong>第一次迭代发生在数组的第二项上</strong>，因此第一个参数是数组的第一项，第二个参数就是数组的第二项。</p>
+</blockquote>
+<p><br><br><br><br><br></p>
+<h1 id="Date-类型"><a href="#Date-类型" class="headerlink" title="Date 类型"></a>Date 类型</h1><p>Date类型 使用自 <strong>UTC（Coordinated Universal Time，国际协调时间）</strong> 1970 年1 月1 日午夜（零时）开始经过的 <strong>毫秒数</strong> 来保存日期。</p>
+<p>使用 Date 构造函数，创建一个日期对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br></pre></td></tr></table></figure>
+<p><strong>不传递参数</strong> 的情况下，新创建的对象自动获得 <strong>当前日期和时间</strong>；<br>如果想根据 <strong>特定的日期和时间</strong> 创建日期对象，必须传入表示 <strong>该日期的毫秒数</strong>。<br>ECMAScript 提供了三个方法，以获取日期的毫秒数：</p>
+<ul>
+<li><strong>Date.parse()</strong> ：接收一个<strong>表示日期的字符串参数</strong>，然后尝试根据这个字符串返回相应日期的毫秒数；如果传入Date.parse()方法的字符串不能表示日期，那么它会返回NaN。</li>
+<li><strong>Date.UTC()</strong> ：参数分别是 <strong>年份</strong>、<strong>基于0 的月份</strong>（0 - 11）、月中的哪一天（1 - 31）、小时数（0 - 23）、分钟、秒以及毫秒数；返回表示日期的毫秒数。如果没有提供月中的天数，则假设天数为1；如果省略其他参数，则统统假设为0。</li>
+<li><strong>Data.now()</strong> ：返回表示调用这个方法时的日期和时间的毫秒数（可用于分析代码；在不支持它的浏览器中，使用+操作符把Data 对象转换成字符串，也可以达到同样的目的）。</li>
+</ul>
+<blockquote>
+<p>实际上，如果直接将表示日期的字符串传递给 Date 构造函数，也会在后台调用 Date.parse()。<br><br>如同模仿Date.parse()一样，Date 构造函数也会模仿Date.UTC()，但有一点明显不同：日期和时间都基于本地时区而非GMT 来创建。</p>
+</blockquote>
+<h2 id="日期格式化方法"><a href="#日期格式化方法" class="headerlink" title="日期格式化方法"></a>日期格式化方法</h2><p>将日期格式化为字符串的方法 如下：</p>
+<ul>
+<li><strong>toDateString()</strong> ——以特定于实现的格式显示星期几、月、日和年；</li>
+<li><strong>toTimeString()</strong> ——以特定于实现的格式显示时、分、秒和时区；</li>
+<li><strong>toLocaleDateString()</strong> ——以特定于地区的格式显示星期几、月、日和年；</li>
+<li><strong>toLocaleTimeString()</strong> ——以特定于地区的格式显示时、分、秒；</li>
+<li><strong>toUTCString()</strong> ——以特定于实现的格式完整的UTC 日期。</li>
+</ul>
+<h2 id="日期-时间组件方法"><a href="#日期-时间组件方法" class="headerlink" title="日期/时间组件方法"></a>日期/时间组件方法</h2><blockquote>
+<p>UTC 日期指的是在没有时区偏差的情况下（将日期转换为GMT 时间）的日期值</p>
+</blockquote>
+<p>常用方法如下：</p>
+<ul>
+<li><strong>getFullYear()</strong>  ：取得4位数的年份（如2007而非仅07）；</li>
+<li><strong>getMonth()</strong> ： 返回日期中的月份，其中0表示一月，11表示十二月；</li>
+<li><strong>getDate()</strong> ： 返回日期月份中的天数（1到31）；</li>
+<li><strong>getDay()</strong> ： 返回日期中星期的星期几（其中0表示星期日，6表示星期六）；<br><br></li>
+<li><strong>setFullYear(年)</strong> ： 设置日期的年份；</li>
+<li><strong>setMonth(月)</strong> ： 设置日期的月份。传入的月份值必须大于0，超过11则增加年份；</li>
+<li><strong>setDate(日)</strong> ： 设置日期月份中的天数。如果传入的值超过了该月中应有的天数，则增加月份；</li>
+</ul>
+<p><br><br><br><br><br></p>
+<h1 id="RegExp-类型"><a href="#RegExp-类型" class="headerlink" title="RegExp 类型"></a>RegExp 类型</h1><ul>
+<li><p>以 <strong>字面量形式</strong> 创建 正则表达式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> expression = <span class="regexp">/ pattern /</span> flags ;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <strong>RegExp 构造函数</strong> 创建 正则表达式：<br>它接收两个参数：一个是要匹配的字符串模式（所有元字符都必须 <strong>双重转义</strong>，那<br>些已经转义过的字符也是如此），另一个是可选的标志字符串。</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pattern1 = <span class="regexp">/[bc]at/i</span>;</span><br><span class="line"><span class="keyword">var</span> pattern2 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"[bc]at"</span>, <span class="string">"i"</span>);</span><br></pre></td></tr></table></figure>
+<p>正则表达式的匹配模式支持下列 3 个标志：</p>
+<ul>
+<li><strong>g</strong> ：表示 <strong>全局</strong>（global）模式；</li>
+<li><strong>i</strong> ：表示 <strong>不区分大小写</strong>（case-insensitive）模式；</li>
+<li><strong>m</strong> ：表示 <strong>多行</strong>（multiline）模式。</li>
+</ul>
+<p>模式中使用的所有元字符都必须转义。正则表达式中的 <strong>元字符</strong> 包括：<br>     ( [ { \ ^ $ | ) ? * + .]} </p>
+<blockquote>
+<p>注意：<br>使用正则表达式字面量和使用RegExp 构造函数创建的正则表达式不一样。<br>在ECMAScript 3 中，正则表达式字面量始终会共享同一个RegExp 实例，<br>而使用构造函数创建的每一个新RegExp 实例都是一个新实例。</p>
+</blockquote>
+<h2 id="RegExp-实例属性"><a href="#RegExp-实例属性" class="headerlink" title="RegExp 实例属性"></a>RegExp 实例属性</h2><p>RegExp 的每个实例都具有下列属性，通过这些属性可以取得有关模式的各种信息。</p>
+<ul>
+<li>global：布尔值，表示是否设置了g 标志。</li>
+<li>ignoreCase：布尔值，表示是否设置了i 标志。</li>
+<li>lastIndex：整数，表示开始搜索下一个匹配项的字符位置，从0 算起。</li>
+<li>multiline：布尔值，表示是否设置了m 标志。</li>
+<li>source：正则表达式的字符串表示，按照字面量形式而非传入构造函数中的字符串模式返回。</li>
+</ul>
+<h2 id="RegExp实例方法"><a href="#RegExp实例方法" class="headerlink" title="RegExp实例方法"></a>RegExp实例方法</h2><ul>
+<li><strong>exec()</strong>  ：exec() 接受一个参数，即 要应用模式的字符串，然后返回 <strong>包含第一个匹配项信息的数组</strong>；或者在没有匹配项的情况下返回null。</li>
+</ul>
+<blockquote>
+<p>返回的数组虽然是Array 的实例，但包含两个额外的属性：index 和input。其中，<strong>index</strong> 表示匹配项在字符串中的位置，而 <strong>input</strong> 表示应用正则表达式的字符串。在数组中，第一项是与整个模式匹配的字符串，其他项是与模式中的捕获组匹配的字符串（如果模式中没有捕获组，则该数组只包含一项）。</p>
+</blockquote>
+<ul>
+<li><strong>test()</strong> ：在模式与该参数匹配的情况下返回 true；否则，返回 false。</li>
+</ul>
+<blockquote>
+<p>test() 方法经常被用在 <strong>if 语句</strong> 中</p>
+</blockquote>
+<p><br><br><br><br><br></p>
+<h1 id="Function-类型"><a href="#Function-类型" class="headerlink" title="Function 类型"></a>Function 类型</h1><p>每个函数都是Function 类型的实例，而且都与其他引用类型一样具有属性和方法。<br>由于<strong>函数是对象</strong>，因此 <strong>函数名</strong> 实际上也是一个 <strong>指向函数对象的指针</strong>，不会与某个函数绑定。</p>
+<p>定义函数的方式：</p>
+<ul>
+<li><strong>函数声明</strong></li>
+<li><strong>函数表达式</strong></li>
+<li><strong>使用Function 构造函数</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数声明</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 函数表达式定义法</span></span><br><span class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 构造函数定义法</span></span><br><span class="line"><span class="keyword">var</span> sum = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"num1"</span>, <span class="string">"num2"</span>, <span class="string">"return num1 + num2"</span>); <span class="comment">// 不推荐</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>构造函数定义法 会导致<strong>解析两次代码</strong>（第一次是解析常规ECMAScript 代码，第二次是解析传入构造函数中的字符串），从而影响性能。</p>
+</blockquote>
+<p>由于函数名仅仅是指向函数的指针，因此函数名与包含对象指针的其他变量没有什么不同。换句话说，一个函数可能会有多个名字。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line">alert(sum(<span class="number">10</span>,<span class="number">10</span>)); <span class="comment">//20</span></span><br><span class="line"><span class="keyword">var</span> anotherSum = sum;</span><br><span class="line">alert(anotherSum(<span class="number">10</span>,<span class="number">10</span>)); <span class="comment">//20</span></span><br><span class="line">sum = <span class="literal">null</span>;</span><br><span class="line">alert(anotherSum(<span class="number">10</span>,<span class="number">10</span>)); <span class="comment">//20</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，使用 <strong>不带圆括号的函数名</strong> 是 <strong>访问函数指针</strong>，而非调用函数。</p>
+</blockquote>
+<h2 id="没有重载"><a href="#没有重载" class="headerlink" title="没有重载"></a>没有重载</h2><p>函数是对象，没有重载，可以将函数名理解为 指针：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addSomeNumber</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> num + <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addSomeNumber</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> num + <span class="number">200</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> result = addSomeNumber(<span class="number">100</span>); <span class="comment">//300</span></span><br></pre></td></tr></table></figure></p>
+<p>上述代码 用 函数表达式 表示为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> addSomeNumber = <span class="function"><span class="keyword">function</span> (<span class="params">num</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> num + <span class="number">100</span>;</span><br><span class="line">&#125;;</span><br><span class="line">addSomeNumber = <span class="function"><span class="keyword">function</span> (<span class="params">num</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> num + <span class="number">200</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> result = addSomeNumber(<span class="number">100</span>); <span class="comment">//300</span></span><br></pre></td></tr></table></figure>
+<p>可见，在创建第二个函数时，实际上覆盖了<strong>引用</strong>第一个函数的变量addSomeNumber。</p>
+<h2 id="函数声明-与-函数表达式"><a href="#函数声明-与-函数表达式" class="headerlink" title="函数声明 与 函数表达式"></a>函数声明 与 函数表达式</h2><blockquote>
+<p>解析器在向执行环境中加载数据时，对函数声明和函数表达式并非一视同仁。<br><strong>解析器会率先读取函数声明，并使其在执行任何代码之前可用（可以访问）；<br>至于函数表达式，则必须等到解析器执行到它所在的代码行，才会真正被解释执行。</strong></p>
+</blockquote>
+<p><strong>函数声明提升</strong>（function declaration hoisting）<br>对代码求值时，JavaScript引擎在第一遍会声明函数并将它们放到源代码树的顶部。所以，即使声明函数的代码在调用它的代码后面，JavaScript 引擎也能把函数声明提升到顶部。</p>
+<h2 id="作为值的函数"><a href="#作为值的函数" class="headerlink" title="作为值的函数"></a>作为值的函数</h2><p>因为 <strong>函数名</strong> 本身就是 <strong>变量</strong>，所以函数也可以 <strong>作为值</strong> 来使用。<br>也就是说，不仅可以像传递参数一样把一个函数传递给另一个函数，而且可以将一个函数作为另一个函数的结果返回。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callSomeFunction</span>(<span class="params">someFunction, someArgument</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> someFunction(someArgument);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例如，假设有一个对象数组，我们想要根据某个对象属性对数组进行排序。而传递给数组sort()方法的比较函数要接收两个参数，即要比较的值。我们需要一种方式来指明按照哪个属性来排序：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createComparisonFunction</span>(<span class="params">propertyName</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">object1, object2</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> value1 = object1[propertyName];</span><br><span class="line">		<span class="keyword">var</span> value2 = object2[propertyName];</span><br><span class="line">		<span class="keyword">if</span> (value1 &lt; value2)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (value1 &gt; value2)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="函数内部属性"><a href="#函数内部属性" class="headerlink" title="函数内部属性"></a>函数内部属性</h2><p>在函数内部，有两个特殊的对象：arguments 和 this 。</p>
+<ul>
+<li><strong>arguments</strong> ：类数组对象，包含着传入函数中的所有参数。<br>这个对象还有一个名叫 <strong>callee</strong> 的属性，该属性是一个指针，指向 <strong>拥有这个arguments 对象的函数</strong>。使用arguments.callee，可以消除 递归调用 中的紧密耦合现象。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (num &lt;=<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> num * <span class="built_in">arguments</span>.callee(num<span class="number">-1</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>this</strong> ：this 引用的是 <strong>函数据以执行的环境对象</strong>（当在网页的全局作用域中调用函数时，this 对象引用的就是 window）</li>
+</ul>
+<blockquote>
+<p>请牢记：函数的名字仅仅是一个 <strong>包含指针的变量</strong> 而已</p>
+</blockquote>
+<ul>
+<li><strong>caller</strong> ：保存着 <strong>调用当前函数的函数的引用</strong>，如果是在全局作用域中调用当前函数，它的值为null。</li>
+</ul>
+<h2 id="函数属性和方法"><a href="#函数属性和方法" class="headerlink" title="函数属性和方法"></a>函数属性和方法</h2><ul>
+<li><strong>length 属性</strong>：表示函数希望接收的 <strong>命名参数的个数</strong>；</li>
+<li><strong>prototype 属性</strong>： 不可枚举；</li>
+</ul>
+<p>以下方法 在特定的作用域中调用函数，实际上等于设置函数体内 this 对象的值：</p>
+<ul>
+<li><strong>apply() 方法</strong>：接收两个参数：一个是在其中运行函数的作用域，另一个是参数数组。其中，第二个参数可以是Array 的实例，也可以是arguments 对象。</li>
+<li><strong>call() 方法</strong>：第一个参数是this 值，其余参数都直接传递给函数（必须逐个列举出来）。</li>
+<li><strong>bind() 方法</strong>：这个方法会创建一个函数的实例，其this 值会被绑定到传给bind()函数的值。</li>
+</ul>
+<blockquote>
+<p>call()方法与apply()方法的作用相同，它们的区别仅在于接收参数的方式不同。</p>
+</blockquote>
+<p>apply()和call() 能够扩充函数赖以运行的作用域，使用call()（或apply()）来扩充作用域的最大好处，就是对象不需要与方法有任何耦合关系。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.color = <span class="string">"red"</span>;</span><br><span class="line"><span class="keyword">var</span> o = &#123; <span class="attr">color</span>: <span class="string">"blue"</span> &#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayColor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	alert(<span class="keyword">this</span>.color);</span><br><span class="line">&#125;</span><br><span class="line">sayColor(); <span class="comment">//red</span></span><br><span class="line">sayColor.call(<span class="keyword">this</span>); <span class="comment">//red</span></span><br><span class="line">sayColor.call(<span class="built_in">window</span>); <span class="comment">//red</span></span><br><span class="line">sayColor.call(o); <span class="comment">//blue</span></span><br></pre></td></tr></table></figure>
+<p><br><br><br><br><br></p>
+<h1 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h1><p>实际上，每当读取一个基本类型值的时候，后台就会创建一个对应的基本包装类型的对象，从而让我们能够调用一些方法来操作这些数据。</p>
+<blockquote>
+<p>引用类型与基本包装类型的主要区别就是 <strong>对象的生存期</strong>。<br>（1）使用 new 操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。<br>（2）而自动创建的基本包装类型的对象，则只存在于一行代码的执行瞬间，然后立即被销毁。这意味着我们不能在运行时为基本类型值添加属性和方法。</p>
+</blockquote>
+<p>三种基本包装类型的共同特征：<br>（1）每个包装类型都 <strong>映射</strong> 到同名的基本类型；<br>（2）在 <strong>读取模式</strong> 下访问基本类型值时，就会创建对应的基本包装类型的一个对象，从而方便了数据操作（在实例上调用指定的方法）；<br>（3）操作基本类型值的语句一经 <strong>执行完毕</strong>，就会 <strong>立即销毁</strong> 新创建的包装对象。</p>
+<h2 id="Boolean-类型"><a href="#Boolean-类型" class="headerlink" title="Boolean 类型"></a>Boolean 类型</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> falseObject = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">false</span>);</span><br><span class="line"><span class="keyword">var</span> result = falseObject &amp;&amp; <span class="literal">true</span>;</span><br><span class="line">alert(result); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> falseValue = <span class="literal">false</span>;</span><br><span class="line">result = falseValue &amp;&amp; <span class="literal">true</span>;</span><br><span class="line">alert(result); <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">alert(<span class="keyword">typeof</span> falseObject); <span class="comment">//object</span></span><br><span class="line">alert(<span class="keyword">typeof</span> falseValue); <span class="comment">//boolean</span></span><br><span class="line">alert(falseObject <span class="keyword">instanceof</span> <span class="built_in">Boolean</span>); <span class="comment">//true</span></span><br><span class="line">alert(falseValue <span class="keyword">instanceof</span> <span class="built_in">Boolean</span>); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p><strong>布尔表达式中的所有对象都会被转换为 true</strong>，因此上述代码中，falseObject 对象在布尔表达式中代表的是true。<br>我们的建议是永远不要使用Boolean 对象。</p>
+<h2 id="Number-类型"><a href="#Number-类型" class="headerlink" title="Number 类型"></a>Number 类型</h2><ul>
+<li><strong>valueOf() 方法</strong> ：返回对象表示的基本类型的数值；</li>
+<li><strong>toLocaleString() 方法</strong> ：返回字符串形式的数值；</li>
+<li><strong>toString() 方法</strong>： 返回字符串形式的数值（可以为toString()方法传递一个<strong>表示基数</strong>的参数，告诉它返回<strong>几进制数值</strong>的字符串形式）；</li>
+<li><strong>toFixed() 方法</strong> ：会按照指定的小数位返回数值的字符串表示 ；</li>
+<li><strong>toExponential() 方法</strong> ：返回以指数表示法（也称e 表示法）表示的数值的字符串形式；</li>
+<li><strong>toPrecision() 方法</strong> ：可能会返回固定大小（fixed）格式，也可能返回指数<br>（exponential）格式；具体规则是看哪种格式最合适。接收一个参数，即表示数值的所有数字的位数（不包括指数部分）。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">10.005</span>;</span><br><span class="line">alert(num.toFixed(<span class="number">2</span>)); <span class="comment">//"10.01"</span></span><br><span class="line"><span class="comment">// 能够 自动舍入 的特性，使得toFixed()方法很适合 处理货币值</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">99</span>;</span><br><span class="line">alert(num.toPrecision(<span class="number">1</span>)); <span class="comment">//"1e+2"</span></span><br><span class="line">alert(num.toPrecision(<span class="number">2</span>)); <span class="comment">//"99"</span></span><br><span class="line">aler t(num.toPrecision(<span class="number">3</span>)); <span class="comment">//"99.0"</span></span><br></pre></td></tr></table></figure>
+<h2 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h2><p>String 类型的每个实例都有一个 <strong>length 属性</strong>，表示字符串中包含多个字符。</p>
+<blockquote>
+<p>应该注意的是，即使字符串中包含 <strong>双字节字符</strong>（不是占一个字节的ASCII 字符），每个字符 也仍然 <strong>算一个字符</strong>。</p>
+</blockquote>
+<p>String 类型提供了很多方法，用于辅助完成对ECMAScript 中字符串的解析和操作：</p>
+<ul>
+<li>字符方法<ul>
+<li><strong>charAt()</strong> ：以<strong>单字符字符串</strong>的形式返回给定位置的那个字符</li>
+<li><strong>charCodeAt()</strong> ：以<strong>字符编码</strong>的形式返回给定位置的那个字符</li>
+</ul>
+</li>
+<li>字符串操作方法<ul>
+<li><strong>concat()</strong> ：用于将一或多个字符串拼接起来，返回拼接得到的新字符串。 </li>
+<li><strong>加号操作符（+）</strong></li>
+<li><strong>slice()</strong> </li>
+<li><strong>substr()</strong> </li>
+<li><strong>substring()</strong></li>
+</ul>
+</li>
+<li>字符串位置方法<ul>
+<li><strong>indexOf()</strong> ： 从前往后</li>
+<li><strong>lastIndexOf()</strong> ： 从后往前</li>
+</ul>
+</li>
+<li><strong>trim() 方法</strong> ： 创建一个字符串的副本，删除前置及后缀的所有空格，然后返回结果；</li>
+<li>字符串大小写转换方法<ul>
+<li><strong>toLowerCase()</strong></li>
+<li><strong>toUpperCase()</strong></li>
+<li><strong>toLocaleLowerCase()</strong></li>
+<li><strong>toLocaleUpperCase()</strong></li>
+</ul>
+</li>
+<li>字符串的模式匹配方法<ul>
+<li><strong>match()</strong> ：本质上与调用RegExp 的exec()方法相同。</li>
+<li><strong>search()</strong> ：返回字符串中第一个匹配项的索引；如果没有找到匹配项，则返回-1。而且，search()方法始终是从字符串开头向后查找模式。</li>
+<li><strong>replace()</strong> ： 这个方法接受两个参数：第一个参数可以是一个RegExp 对象或者一个字符串（这个字符串不会被转换成正则表达式），第二个参数可以是一个字符串或者一个函数。如果第一个参数是字符串，那么只会替换第一个子字符串。要想替换所有子字符串，唯一的办法就是提供一个正则表达式，而且要指定全局（g）标志。</li>
+<li><strong>split()</strong> ：基于 <strong>指定的分隔符</strong> 将一个字符串分割成多个子字符串，并将结果放在一个<strong>数组</strong>中。分隔符可以是字符串，也可以是一个RegExp 对象（这个方法不会将字符串看成正则表达式）；</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">"cat, bat, sat, fat"</span>;</span><br><span class="line"><span class="keyword">var</span> result = text.replace(<span class="string">"at"</span>, <span class="string">"ond"</span>);</span><br><span class="line">alert(result); <span class="comment">//"cond, bat, sat, fat"</span></span><br><span class="line">result = text.replace(<span class="regexp">/at/g</span>, <span class="string">"ond"</span>);</span><br><span class="line">aler t(result); <span class="comment">//"cond, bond, sond, fond"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>localeCompare() 方法</strong> ：比较两个字符串，并返回下列值中的一个：</p>
+<ul>
+<li>如果字符串在字母表中应该排在字符串参数之前，则返回一个负数（-1）；</li>
+<li>如果字符串等于字符串参数，则返回 0；</li>
+<li>如果字符串在字母表中应该排在字符串参数之后，则返回一个正数（1）。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> stringValue = <span class="string">"yellow"</span>;</span><br><span class="line">alert(stringValue.localeCompare(<span class="string">"brick"</span>)); <span class="comment">//1</span></span><br><span class="line">alert(stringValue.localeCompare(<span class="string">"yellow"</span>)); <span class="comment">//0</span></span><br><span class="line">alert(stringValue.localeCompare(<span class="string">"zoo"</span>)); <span class="comment">//-1</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>fromCharCode() 方法</strong> ： 接收一或多个字符编码，然后将它们转换成一个字符串。</p>
+</li>
+<li>HTML 方法</li>
+</ul>
+<p><br><br><br><br><br></p>
+<h1 id="单体内置对象"><a href="#单体内置对象" class="headerlink" title="单体内置对象"></a>单体内置对象</h1><p>ECMA-262 对内置对象的定义是：“由ECMAScript 实现提供的、不依赖于宿主环境的对象，这些对象在ECMAScript 程序执行之前就已经存在了。</p>
+<h2 id="Global对象"><a href="#Global对象" class="headerlink" title="Global对象"></a>Global对象</h2><p>事实上，没有全局变量或全局函数；所有在全局作用域中定义的属性和函数，都是Global 对象的属性。不属于任何其他对象的属性和方法，最终都是它的属性和方法。<br>例如，isNaN()、isFinite()、parseInt() 以及 parseFloat() 等。</p>
+<ul>
+<li>URI 编码方法 ：Global 对象的encodeURI()和encodeURIComponent()方法可以对URI（Uniform ResourceIdentifiers，通用资源标识符）进行编码，以便发送给浏览器。<ul>
+<li><strong>encodeURI()</strong>：主要用于整个URI；</li>
+<li><strong>encodeURIComponent()</strong> ：主要用于对URI 中的某一段。</li>
+<li><strong>decodeURI()</strong> ：只能对使用encodeURI()替换的字符进行解码；</li>
+<li><strong>decodeURIComponent()</strong> ：能够解码使用encodeURIComponent()编码的所有字符，即它可以解码任何特殊字符的编码。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>它们的主要区别在于，encodeURI()不会对本身属于URI 的特殊字符进行编码，例如冒号、正斜杠、问号和井字号；而encodeURIComponent()则会对它发现的任何非标准字符进行编码。</p>
+<p>一般来说， 我们使用encodeURIComponent() 方法的时候要比使用encodeURI()更多，因为在实践中更常见的是对查询字符串参数而不是对基础URI进行编码。</p>
+</blockquote>
+<ul>
+<li><strong>eval() 方法</strong> ：<br>通过 eval() 执行的代码被认为是包含该次调用的执行环境的一部分，因此被执行的代码具有与该执行环境相同的作用域链。这意味着通过eval()执行的代码可以引用在包含环境中定义的变量；在eval()中创建的任何变量或函数都不会被提升，因为在解析代码的时候，它们被包含在一个字符串中；它们只在eval()执行的时候创建。</li>
+<li><strong>Global 对象的属性</strong></li>
+<li><strong>window 对象</strong> ：<br>ECMAScript 虽然没有指出如何直接访问Global 对象，但Web 浏览器都是将这个全局对象作为 window 对象的一部分加以实现的。因此，在全局作用域中声明的所有变量和函数，就都成为了window对象的属性。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> global = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="comment">/* 在没有给函数明确指定this 值的情况下</span></span><br><span class="line"><span class="comment">（无论是通过将函数添加为对象的方法，</span></span><br><span class="line"><span class="comment">还是通过调用call()或apply()），</span></span><br><span class="line"><span class="comment">this值等于Global 对象。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="Math对象"><a href="#Math对象" class="headerlink" title="Math对象"></a>Math对象</h2><p>Math 对象有如下方法：</p>
+<ul>
+<li><strong>min() 方法</strong> ：确定一组数中的最小值；</li>
+<li><strong>max() 方法</strong> ：确定一组数中的最大值；</li>
+</ul>
+<blockquote>
+<p>这两个方法经常用于<br>（1）避免多余的循环；<br>（2）在if 语句中确定一组数的最大/小值。</p>
+</blockquote>
+<p>要找到 <strong>数组</strong> 中的最大或最小值，可以像下面这样使用 apply() 方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> values = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>];</span><br><span class="line"><span class="keyword">var</span> max = <span class="built_in">Math</span>.max.apply(<span class="built_in">Math</span>, values);</span><br><span class="line"><span class="comment">// 关键是把 Math 对象作为apply()的第一个参数，从而正确地设置this 值。</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>Math.ceil()</strong> ：向上舍入；</li>
+<li><strong>Math.floor()</strong> ：向下舍入；</li>
+<li><strong>Math.round()</strong> ：四舍五入；</li>
+<li><strong>Math.random()</strong> ：返回 <strong>[ 0 , 1 )</strong> 中的一个随机数</li>
+</ul>
+<blockquote>
+<p>利用Math.random()从某个整数范围内随机选择一个值：<br>值 = Math.floor( Math.random() * 可能值的总数 + 第一个可能的值 )</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectFrom</span>(<span class="params">lowerValue, upperValue</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> choices = upperValue - lowerValue + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * choices + lowerValue);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> num = selectFrom(<span class="number">2</span>, <span class="number">10</span>);</span><br><span class="line">alert(num); <span class="comment">// 介于 2 和10 之间（包括 2 和 10）的一个数值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 利用这个函数，可以方便地从数组中随机取出一项</span></span><br><span class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>, <span class="string">"yellow"</span>, <span class="string">"black"</span>, <span class="string">"purple"</span>, <span class="string">"brown"</span>];</span><br><span class="line"><span class="keyword">var</span> color = colors[selectFrom(<span class="number">0</span>, colors.length<span class="number">-1</span>)];</span><br><span class="line">alert(color); <span class="comment">// 可能是数组中包含的任何一个字符串</span></span><br></pre></td></tr></table></figure>
+<p><br><br><br><br><br><br>以上。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/jiafengfu">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

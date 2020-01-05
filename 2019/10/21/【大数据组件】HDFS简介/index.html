@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="符佳凤的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        【大数据组件】HDFS简介 - FU的博客 | FU&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Fashion passes ,   style remains. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Jiafeng Fu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简述"><span class="toc-text">简述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HDFS-优点与局限"><span class="toc-text">HDFS 优点与局限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设计思想"><span class="toc-text">设计思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作用"><span class="toc-text">作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本概念"><span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从HDFS读取内容"><span class="toc-text">从HDFS读取内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#向HDFS写入内容"><span class="toc-text">向HDFS写入内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#副本存放策略"><span class="toc-text">副本存放策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HA机制"><span class="toc-text">HA机制</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> Fashion passes ,   style remains. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        【大数据组件】HDFS简介
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-10-21 22:49:48</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#大数据" title="大数据">大数据</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <blockquote>
+<p><strong>HDFS</strong> = Hadoop Distributed File System</p>
+<p><strong>Hadoop 分布式文件系统</strong></p>
+<p>分布式文件系统：统一管理 分布在集群上 的文件系统。</p>
+</blockquote>
+<p><br><br><br></p>
+<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><h3 id="HDFS-优点与局限"><a href="#HDFS-优点与局限" class="headerlink" title="HDFS 优点与局限"></a>HDFS 优点与局限</h3><p>优点：</p>
+<ol>
+<li><strong>高度容错性</strong>，适合部署在 廉价的机器上；</li>
+<li>提供 <strong>高吞吐量</strong> 的数据访问，适用于 <strong>大规模数据集（Large Data Set）</strong>；</li>
+<li><strong>流式读取</strong> 文件系统数据，一次写入，多次读取，不能修改，只能追加。能保证数据的一致性。</li>
+</ol>
+<blockquote>
+<p>注：大规模数据集，指 10^2 MB/GB/TB/PB 级别。</p>
+</blockquote>
+<p>局限：</p>
+<ol>
+<li>不支持 低延迟访问（毫秒级）；</li>
+<li>不适合 大量的小文件存储；</li>
+<li>不支持 并发写入；</li>
+<li>不支持修改。</li>
+</ol>
+<p><br></p>
+<h3 id="设计思想"><a href="#设计思想" class="headerlink" title="设计思想"></a>设计思想</h3><p><strong>分而治之</strong> — 将大文件、大批量文件，分布式存放在大量服务器上，以便于采取 分而治之 的方式对海量数据进行分析运算。</p>
+<p><br></p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>在 大数据系统 中，为各类分布式运算框架（如：MapReduce、spark、tez 等），提供 <strong>数据存储</strong> 服务。</p>
+<p><br></p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>一个分布式文件系统，用于存储文件，通过统一的 <u><strong>命名空间（目录树）</strong></u> 来定位文件。</p>
+<p>HDFS是一个 <strong>主/从（Mater/Slave）体系结构</strong> ，HDFS集群拥有一个NameNode和一些DataNode。NameNode管理文件系统的元数据，DataNode存储实际的数据。</p>
+<p>从用户角度看，HDFS 通过 <strong>目录路径</strong> 对文件执行 <strong>CRUD</strong> 操作（Create、Read、Update、Delete）。</p>
+<hr>
+<p><u><strong>HDFS客户端</strong></u>：就是客户端。<br>1、提供一些命令来管理、访问 HDFS，比如启动或者关闭HDFS。<br>2、与 DataNode 交互，读取或者写入数据；读取时，要与 NameNode 交互，获取文件的位置信息；写入 HDFS 的时候，Client 将文件切分成 一个一个的Block，然后进行存储。<br>3、文件切分。文件上传 HDFS 时，Client 将文件切分成一个个的 Block，然后进行存储。</p>
+<p><u><strong>NameNode</strong></u>：即Master，<br>1、管理 HDFS 的名称空间。<br>2、管理数据块（Block）映射信息<br>3、配置副本策略<br>4、处理客户端读写请求。</p>
+<p><u><strong>DataNode</strong></u>：就是Slave。NameNode 下达命令，DataNode 执行实际的操作。<br>1、存储实际的数据块。<br>2、执行数据块的读/写操作。</p>
+<p><u><strong>Secondary NameNode</strong></u>：并非 NameNode 的热备。当NameNode 挂掉的时候，它并不能马上替换 NameNode 并提供服务。<br>1、辅助 NameNode，分担其工作量。<br>2、定期合并 fsimage和fsedits，并推送给NameNode。<br>3、在紧急情况下，可辅助恢复 NameNode。</p>
+<img src="/2019/10/21/【大数据组件】HDFS简介/hdfs架构.png" title="hdfs架构">
+<p><br></p>
+<img src="/2019/10/21/【大数据组件】HDFS简介/hdfs架构2.png" title="hdfs架构2">
+<hr>
+<p><br><br><br></p>
+<h3 id="从HDFS读取内容"><a href="#从HDFS读取内容" class="headerlink" title="从HDFS读取内容"></a>从HDFS读取内容</h3><p>1、首先调用DistributedFileSystem对象的open方法，其实获取的是一个DistributedFileSystem的实例。</p>
+<p>2、DistributedFileSystem通过RPC(远程过程调用)获得文件的第一批block的locations，同一block按照重复数会返回多个locations，这些locations按照hadoop拓扑结构排序，距离客户端近的排在前面。</p>
+<p>3、前两步会返回一个FSDataInputStream对象，该对象会被封装成 DFSInputStream 对象，DFSInputStream可以方便的管理DataNode和NameNode数据流。客户端调用read方法，DFSInputStream就会找出离客户端最近的DataNode并连接DataNode。</p>
+<p>4、数据从DataNode源源不断的流向客户端。</p>
+<p>5、如果第一个block块的数据读完了，就会关闭指向第一个block块的DataNode连接，接着读取下一个block块。这些操作对客户端来说是透明的，从客户端的角度来看只是读一个持续不断的流。</p>
+<p>6、如果第一批block都读完了，DFSInputStream就会去NameNode拿下一批blocks的location，然后继续读，如果所有的block块都读完，这时就会关闭掉所有的流。<br><img src="/2019/10/21/【大数据组件】HDFS简介/hdfs读取数据.png" title="hdfs读取数据"></p>
+<p><br><br><br></p>
+<h3 id="向HDFS写入内容"><a href="#向HDFS写入内容" class="headerlink" title="向HDFS写入内容"></a>向HDFS写入内容</h3><p>1.客户端通过调用DistributedFileSystem的create方法，创建一个新的文件。</p>
+<p>2.DistributedFileSystem通过RPC（远程过程调用）调用NameNode，去创建一个没有blocks关联的新文件。创建前，NameNode会做各种校验，比如文件是否存在，客户端有无权限去创建等。如果校验通过，NameNode 就会记录下新文件，否则就会抛出IO异常。</p>
+<p>3.前两步结束后会返回 FSDataOutputStream 的对象，和读文件的时候相似，FSDataOutputStream 被封装成 DFSOutputStream，DFSOutputStream 可以协调NameNode和 DataNode。客户端开始写数据到DFSOutputStream，DFSOutputStream会把数据切成一个个小packet，然后排成队列data queue。</p>
+<p>4.DataStreamer 会去处理接受 data queue，它先问询 NameNode 这个新的 block 最适合存储的在哪几个DataNode里，比如重复数是3，那么就找到3个最适合的DataNode，把它们排成一个 pipeline。DataStreamer 把 packet 按队列输出到管道的第一个 DataNode 中，第一个 DataNode又把 packet 输出到第二个 DataNode 中，以此类推。</p>
+<p>5.DFSOutputStream 还有一个队列叫 ack queue，也是由 packet 组成，等待DataNode的收到响应，当pipeline中的所有DataNode都表示已经收到的时候，这时akc queue才会把对应的packet包移除掉。</p>
+<p>6.客户端完成写数据后，调用close方法关闭写入流。</p>
+<p>7.DataStreamer 把剩余的包都刷到 pipeline 里，然后等待 ack 信息，收到最后一个ack 后，通知 DataNode 把文件标示为已完成。<br><img src="/2019/10/21/【大数据组件】HDFS简介/hdfs写入数据.png" title="hdfs写入数据"></p>
+<p><br><br><br></p>
+<h3 id="副本存放策略"><a href="#副本存放策略" class="headerlink" title="副本存放策略"></a>副本存放策略</h3><p>一般情况下副本系数为3，HDFS的副本放置策略是：将第一个副本放在本地节点，将第二个副本放在本地机架上的另一个节点，而第三个副本放到不同机架上的节点。</p>
+<p>这种方式减少了机架间的写流量，从而提高了写的性能。机架故障的机率远小于节点故障。这种方式并不影响数据可靠性和可用性的限制，并且它确实减少了读操作的网络聚合带宽，因为文件块仅存在两个不同的机架，而不是三个。</p>
+<p>文件的副本不是均匀的分布在机架当中，1/3的副本在同一个节点上，1/3副本在同一个机架上，另外1/3个副本均匀地分布在其他机架上。</p>
+<p><br></p>
+<p><strong>流水线复制</strong></p>
+<p>假设HDFS副本系数为3，当本地暂时文件积累到一个数据块大小时，client会从NameNode获取一个列表用于存放副本。然后client开始向第一个DataNode数据传输，第一个DataNode一小部分一小部分地接收数据，将每一部分写入本地仓库，并同一时间传输该部分到列表中的第二个DataNode节点。第二个DataNode也是这样，一小部分一小部分地接收数据，写入本地仓库，并同一时候转发给下一个节点，数据以流水线的方式从前一个DataNode拷贝到下一个DataNode。最后，第三个DataNode接收数据并存储到本地。因此，DataNode能流水线地从前一个节点接收数据，并同一时间转发给下一个节点，数据以流水线的方式从前一个DataNode拷贝到下一个DataNode，并以相反的方向Ack前一个Node。<br><img src="/2019/10/21/【大数据组件】HDFS简介/hdfs副本存放策略.png" title="hdfs副本存放策略"></p>
+<p><br><br><br></p>
+<h3 id="HA机制"><a href="#HA机制" class="headerlink" title="HA机制"></a>HA机制</h3><p><strong>HA = high availability 高可用性</strong></p>
+<p>背景：NameNode 单点故障（SPOF=single point of failure）。</p>
+<p>在 HA 机制下，可以运行一个 <strong>Hot Standby</strong>，作为 <strong>热备份</strong>（待机状态），在 Active NameNode 故障时，替代原有的 NN 成为新的 NN 提供服务。这一过程对用户透明，由客户端库完成。</p>
+<p><u><strong>主要实现逻辑</strong></u>：</p>
+<ol>
+<li>主备需 共享 edit log 存储；</li>
+<li>DataNode 需要同时往 主备NN 发送 Block Report；</li>
+<li>客户端需要配置 failover 模式（失效备援模式，对用户透明）；</li>
+<li>Standby 替代 Secondary NameNode.</li>
+</ol>
+<p>NameNode的切换通过代failover controller来实现。failover controller有多种实现，默认实现使用ZooKeeper来保证只有一个Namenode处于active状态。</p>
+<p>每个Namenode运行一个轻量级的failover controller进程，该进程使用简单的心跳机制来监控Namenode的存活状态并在Namenode失败时触发failover。Failover可以由运维手动触发，例如在日常维护中需要切换主Namenode，这种情况graceful(优雅的) failover，非手动触发的failover称为ungraceful failover。</p>
+<p>在ungraceful failover的情况下，没有办法确定失败（被判定为失败）的节点是否停止运行，也就是说触发failover后，之前的主Namenode可能还在运行。QJM一次只允许一个Namenode写edit log，但是之前的主Namenode仍然可以接受读请求。Hadoop使用fencing来杀掉之前的Namenode。Fencing通过收回之前Namenode对共享的edit log的访问权限、关闭其网络端口使得原有的Namenode不能再继续接受服务请求。使用STONITH技术也可以将之前的主Namenode关机。</p>
+<hr>
+<p><br><br><strong>扩展：大数据存储生态圈简介</strong></p>
+<p>Hive与Hbase的数据一般都存储在HDFS上。HDFS为他们提供了高可靠性的底层存储支持。</p>
+<p><strong>Hive</strong></p>
+<p>Hive不支持更改数据的操作，Hive基于数据仓库，提供静态数据的动态查询。其使用类SQL语言，底层经过编译转为MapReduce程序，在Hadoop上运行，数据存储在HDFS上。</p>
+<p><strong>HBase</strong></p>
+<p>Hbase是Hadoop database，即Hadoop数据库。它是一个适合于非结构化数据存储的数据库，HBase基于列的而不是基于行的模式。</p>
+<p>HBase是Google Bigtable的开源实现，类似Google Bigtable利用GFS作为其文件存储系统，HBase利用HDFS作为其文件存储系统；Google运行MapReduce来处理Bigtable中的海量数据，HBase同样利用Hadoop MapReduce来处理HBase中的海量数据。</p>
+<p><br><br><br><br><br></p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/jiafengfu">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

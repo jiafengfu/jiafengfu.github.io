@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="符佳凤的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        【大数据组件】YARN简介 - FU的博客 | FU&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Fashion passes ,   style remains. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Jiafeng Fu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#YARN架构"><span class="toc-text">YARN架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ResourceManager"><span class="toc-text">ResourceManager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NodeManager"><span class="toc-text">NodeManager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ApplicationMaster"><span class="toc-text">ApplicationMaster</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Container"><span class="toc-text">Container</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#YARN工作原理简述"><span class="toc-text">YARN工作原理简述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#YARN工作原理详述"><span class="toc-text">YARN工作原理详述</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> Fashion passes ,   style remains. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        【大数据组件】YARN简介
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-10-24 23:33:53</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#大数据" title="大数据">大数据</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p><strong>Apache YARN</strong> ( Yet Another Resource Negotiator ) 是 hadoop 2.0 引入的 <strong>集群资源管理系统</strong> 。用户可以将各种服务框架部署在 YARN 上，由 YARN 进行统一地管理和资源分配。<br></p>
+<p><br></p>
+<h2 id="YARN架构"><a href="#YARN架构" class="headerlink" title="YARN架构"></a>YARN架构</h2><p>YARN 的基本思想是：</p>
+<p>将 MapReduce 1 中的 JobTracker的 <strong>资源管理</strong> 和 <strong>作业调度</strong> 两个功能分开，分别由 <strong>ResourceManager</strong> 和 <strong>ApplicationMaster</strong> 进程来实现。</p>
+<p>YARN 支持多种计算框架 运行在一个集群当中，比如 MapReduce（批处理）、Strom（在线处理）、Spark、Flink 等。</p>
+<p>下图展示了 YARN 资源调度的流程：<br><img src="/2019/10/24/【大数据组件】YARN简介/yarn资源调度流程.png" title="yarn资源调度流程"></p>
+<ul>
+<li><strong>ResourceManager</strong> ：<strong>全局</strong>，负责整个集群的资源管理和调度；</li>
+<li><strong>ApplicationMaster</strong> ：每个 job 有一个 ApplicationMaster，负责应用程序相关的事务，比如 任务调度、任务监控和容错等；</li>
+<li><strong>NodeManager</strong> ：客户端框架，负责containers，监控他们的 资源使用（CPU、内存、磁盘、网络）并上报给 ResourceManager.</li>
+</ul>
+<hr>
+
+<p><br></p>
+<h3 id="ResourceManager"><a href="#ResourceManager" class="headerlink" title="ResourceManager"></a>ResourceManager</h3><p><code>ResourceManager</code> 通常在独立的机器上以后台进程的形式运行，它是整个集群资源的主要协调者和管理者。</p>
+<p><code>ResourceManager</code> 负责给用户提交的所有应用程序分配资源，它根据应用程序优先级、队列容量、ACLs、数据位置等信息，做出决策，然后以共享的、安全的、多租户的方式制定分配策略，调度集群资源。</p>
+<p><strong>主要功能</strong>：</p>
+<ol>
+<li>与客户端交互，处理来自客户端的请求；</li>
+<li>启动和管理 ApplicationMaster，并在它失败时 进行重启；</li>
+<li>管理 NodeManager，接受来自 NM的资源汇报信息，下达管理指令；</li>
+<li>资源调度和管理，接受 来自 AM的资源申请请求，并让 NM为之分配资源。</li>
+</ol>
+<p><br></p>
+<h3 id="NodeManager"><a href="#NodeManager" class="headerlink" title="NodeManager"></a>NodeManager</h3><p><code>NodeManager</code> 是 YARN 集群中的单个计算节点的管理者。主要负责该节点内所有容器Container 的生命周期的管理，监视资源和跟踪节点健康。具体如下：</p>
+<ul>
+<li>启动时向 <code>ResourceManager</code> 注册并定时发送心跳消息，等待 <code>ResourceManager</code> 的指令；</li>
+<li>维护 <code>Container</code> 的生命周期，监控 <code>Container</code> 的资源使用情况；</li>
+<li>管理任务运行时的相关依赖，根据 <code>ApplicationMaster</code> 的需要，在启动 <code>Container</code> 之前将需要的程序及其依赖拷贝到本地。</li>
+</ul>
+<p><br></p>
+<h3 id="ApplicationMaster"><a href="#ApplicationMaster" class="headerlink" title="ApplicationMaster"></a>ApplicationMaster</h3><p>在用户提交一个应用程序时，YARN 会启动一个轻量级的进程 <code>ApplicationMaster</code>。<code>ApplicationMaster</code> 负责协调来自 <code>ResourceManager</code> 的资源，并通过 <code>NodeManager</code> 监视容器内资源的使用情况，同时还负责任务的监控与容错。具体如下：</p>
+<ul>
+<li>根据应用的运行状态来决定动态计算资源需求；</li>
+<li>向 <code>ResourceManager</code> 申请资源，监控申请的资源的使用情况；</li>
+<li>跟踪任务状态和进度，报告资源的使用情况和应用的进度信息；</li>
+<li>负责任务的容错。</li>
+</ul>
+<p><br></p>
+<h3 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h3><p><code>Container</code> 是 YARN 中的资源抽象，它封装了某个节点上的多维度资源，如内存、CPU、磁盘、网络等。当 AM 向 RM 申请资源时，RM 为 AM 返回的资源是用 <code>Container</code> 表示的。YARN 会为每个任务分配一个 <code>Container</code>，该任务只能使用该 <code>Container</code> 中描述的资源。<code>ApplicationMaster</code> 可在 <code>Container</code> 内运行任何类型的任务。例如，<code>MapReduce ApplicationMaster</code> 请求一个容器来启动 map 或 reduce 任务，而 <code>Giraph ApplicationMaster</code> 请求一个容器来运行 Giraph 任务。</p>
+<p><br><br><br><br><br></p>
+<h2 id="YARN工作原理简述"><a href="#YARN工作原理简述" class="headerlink" title="YARN工作原理简述"></a>YARN工作原理简述</h2><img src="/2019/10/24/【大数据组件】YARN简介/yarn工作原理简述.png" title="yarn工作原理简述">
+<ol>
+<li><code>Client</code> 提交作业到 YARN 上；</li>
+<li><code>Resource Manager</code> 选择一个 <code>Node Manager</code>，启动一个 <code>Container</code> 并运行 <code>Application Master</code> 实例；</li>
+<li><code>Application Master</code> 根据实际需要向 <code>Resource Manager</code> 请求更多的 <code>Container</code> 资源（如果作业很小, 应用管理器会选择在其自己的 JVM 中运行任务）；</li>
+<li><code>Application Master</code> 通过获取到的 <code>Container</code> 资源执行分布式计算。</li>
+</ol>
+<p><br><br><br><br><br></p>
+<h2 id="YARN工作原理详述"><a href="#YARN工作原理详述" class="headerlink" title="YARN工作原理详述"></a>YARN工作原理详述</h2><img src="/2019/10/24/【大数据组件】YARN简介/yarn工作原理详述.png" title="yarn工作原理详述">
+<ol>
+<li><strong>作业提交</strong></li>
+</ol>
+<p>client 调用 job.waitForCompletion 方法，向整个集群提交 MapReduce 作业 (第 1 步) 。新的作业 ID(应用 ID) 由资源管理器分配 (第 2 步)。作业的 client 核实作业的输出, 计算输入的 split, 将作业的资源 (包括 Jar 包，配置文件, split 信息) 拷贝给 HDFS(第 3 步)。 最后, 通过调用资源管理器的 submitApplication() 来提交作业 (第 4 步)。</p>
+<ol>
+<li><strong>作业初始化</strong></li>
+</ol>
+<p>当资源管理器收到 submitApplciation() 的请求时, 就将该请求发给调度器 (scheduler), 调度器分配 container, 然后资源管理器在该 container 内启动应用管理器进程, 由节点管理器监控 (第 5 步)。</p>
+<p>MapReduce 作业的应用管理器是一个主类为 MRAppMaster 的 Java 应用，其通过创造一些 bookkeeping 对象来监控作业的进度, 得到任务的进度和完成报告 (第 6 步)。然后其通过分布式文件系统得到由客户端计算好的输入 split(第 7 步)，然后为每个输入 split 创建一个 map 任务, 根据 mapreduce.job.reduces 创建 reduce 任务对象。</p>
+<ol>
+<li><strong>任务分配</strong></li>
+</ol>
+<p>如果作业很小, 应用管理器会选择在其自己的 JVM 中运行任务。</p>
+<p>如果不是小作业, 那么应用管理器向资源管理器请求 container 来运行所有的 map 和 reduce 任务 (第 8 步)。这些请求是通过心跳来传输的, 包括每个 map 任务的数据位置，比如存放输入 split 的主机名和机架 (rack)，调度器利用这些信息来调度任务，尽量将任务分配给存储数据的节点, 或者分配给和存放输入 split 的节点相同机架的节点。</p>
+<ol>
+<li><strong>任务运行</strong></li>
+</ol>
+<p>当一个任务由资源管理器的调度器分配给一个 container 后，应用管理器通过联系节点管理器来启动 container(第 9 步)。任务由一个主类为 YarnChild 的 Java 应用执行， 在运行任务之前首先本地化任务需要的资源，比如作业配置，JAR 文件, 以及分布式缓存的所有文件 (第 10 步。 最后, 运行 map 或 reduce 任务 (第 11 步)。</p>
+<p>YarnChild 运行在一个专用的 JVM 中, 但是 YARN 不支持 JVM 重用。</p>
+<ol>
+<li><strong>进度和状态更新</strong></li>
+</ol>
+<p>YARN 中的任务将其进度和状态 (包括 counter) 返回给应用管理器, 客户端每秒 (通 mapreduce.client.progressmonitor.pollinterval 设置) 向应用管理器请求进度更新, 展示给用户。</p>
+<ol>
+<li><strong>作业完成</strong></li>
+</ol>
+<p>除了向应用管理器请求作业进度外, 客户端每 5 分钟都会通过调用 waitForCompletion() 来检查作业是否完成，时间间隔可以通过 mapreduce.client.completion.pollinterval 来设置。作业完成之后, 应用管理器和 container 会清理工作状态， OutputCommiter 的作业清理方法也会被调用。作业的信息会被作业历史服务器存储以备之后用户核查。</p>
+<p><br><br><br><br><br></p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/jiafengfu">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

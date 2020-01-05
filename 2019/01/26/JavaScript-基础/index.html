@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="符佳凤的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        JavaScript 基础 - FU的博客 | FU&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Fashion passes ,   style remains. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Jiafeng Fu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript-实现"><span class="toc-text">JavaScript 实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在-HTML-中使用-JavaScript"><span class="toc-text">在 HTML 中使用 JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#script-标签的属性"><span class="toc-text">script 标签的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#script-标签的用法"><span class="toc-text">script 标签的用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#直接嵌入-JavaScript-代码"><span class="toc-text">直接嵌入 JavaScript 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#包含外部-JavaScript-文件"><span class="toc-text">包含外部 JavaScript 文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#script-标签的位置"><span class="toc-text">script 标签的位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文档模式"><span class="toc-text">文档模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#noscript-元素"><span class="toc-text">noscript 元素</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript-基本概念"><span class="toc-text">JavaScript 基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#标识符"><span class="toc-text">标识符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注释"><span class="toc-text">注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量"><span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据类型"><span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Undefined-类型"><span class="toc-text">Undefined 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Null-类型"><span class="toc-text">Null 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Boolean-类型"><span class="toc-text">Boolean 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Number-类型"><span class="toc-text">Number 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#String-类型"><span class="toc-text">String 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Object-类型"><span class="toc-text">Object 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#typeof-操作符"><span class="toc-text">typeof 操作符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作符"><span class="toc-text">操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一元操作符："><span class="toc-text">一元操作符：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位操作符："><span class="toc-text">位操作符：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#布尔操作符："><span class="toc-text">布尔操作符：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#乘性操作符："><span class="toc-text">乘性操作符：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加性操作符："><span class="toc-text">加性操作符：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关系操作符："><span class="toc-text">关系操作符：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相等操作符："><span class="toc-text">相等操作符：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#条件操作符："><span class="toc-text">条件操作符：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#赋值操作符："><span class="toc-text">赋值操作符：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#逗号操作符："><span class="toc-text">逗号操作符：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流控制语句"><span class="toc-text">流控制语句</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#if-语句"><span class="toc-text">if 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#do-while-语句"><span class="toc-text">do-while 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#while-语句"><span class="toc-text">while 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-语句"><span class="toc-text">for 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-in-语句"><span class="toc-text">for-in 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#label-语句"><span class="toc-text">label 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#with-语句"><span class="toc-text">with 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#switch-语句"><span class="toc-text">switch 语句</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数"><span class="toc-text">函数</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> Fashion passes ,   style remains. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        JavaScript 基础
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-01-26 00:52:41</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#JavaScript高级程序设计" title="JavaScript高级程序设计">JavaScript高级程序设计</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="JavaScript-实现"><a href="#JavaScript-实现" class="headerlink" title="JavaScript 实现"></a>JavaScript 实现</h1><p>JavaScript 是一种专门为 <strong>与网页交互</strong> 而设计的脚本语言，由下列三部分组成：</p>
+<ul>
+<li><strong>ECMAScript</strong>：提供 核心语言功能；</li>
+<li><strong>DOM</strong> 文档对象模型：提供 访问和操作网页内容的方法和接口；</li>
+<li><strong>BOM</strong> 浏览器对象模型：提供 与浏览器交互的方法和接口。</li>
+</ul>
+<img src="/2019/01/26/JavaScript-基础/JavaScript.png" title="JavaScript由三部分组成">
+<p><br><br><br><br><br></p>
+<h1 id="在-HTML-中使用-JavaScript"><a href="#在-HTML-中使用-JavaScript" class="headerlink" title="在 HTML 中使用 JavaScript"></a>在 HTML 中使用 JavaScript</h1><p>我们向 HTML 页面中插入 JavaScript 的主要方法，就是使用 <strong>&lt;script&gt; 元素</strong>。</p>
+<h2 id="script-标签的属性"><a href="#script-标签的属性" class="headerlink" title="script 标签的属性"></a>script 标签的属性</h2><p>在 HTML5 中，&lt;script&gt; 标签有如下属性：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>type</strong></td>
+<td style="text-align:center">MIME-type</td>
+<td style="text-align:left">（可选）规定脚本的 MIME 类型</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>src</strong></td>
+<td style="text-align:center">URL</td>
+<td style="text-align:left">指定外部脚本的URL</td>
+</tr>
+<tr>
+<td style="text-align:center">async</td>
+<td style="text-align:center">async</td>
+<td style="text-align:left">异步执行脚本（仅对外部脚本有效）</td>
+</tr>
+<tr>
+<td style="text-align:center">defer</td>
+<td style="text-align:center">defer</td>
+<td style="text-align:left">文档完全被解析和显示之后再执行脚本（仅对外部脚本有效）</td>
+</tr>
+<tr>
+<td style="text-align:center">charset</td>
+<td style="text-align:center">charset</td>
+<td style="text-align:left">规定在脚本中使用的字符编码（仅对外部脚本有效）</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="script-标签的用法"><a href="#script-标签的用法" class="headerlink" title="script 标签的用法"></a>script 标签的用法</h2><p>&lt;script&gt; 标签有以下两种使用方式：</p>
+<ul>
+<li>直接在页面中嵌入 JavaScript 代码</li>
+<li>包含外部 JavaScript 文件【<strong>推荐做法</strong>】</li>
+</ul>
+<h3 id="直接嵌入-JavaScript-代码"><a href="#直接嵌入-JavaScript-代码" class="headerlink" title="直接嵌入 JavaScript 代码"></a>直接嵌入 JavaScript 代码</h3><p>在使用 &lt;script&gt;元素嵌入 JavaScript 代码时，只需为 &lt;script&gt; 指定 <strong>type属性</strong>，然后将 JavaScript 代码放入元素内部即可。</p>
+<blockquote>
+<p>注意：</p>
+<ol>
+<li>包含在 &lt;script&gt; 元素内部的 JavaScript 代码将被 <strong>从上至下</strong> 依次解释。</li>
+<li>在解释器对 &lt;script&gt; 元素内部的所有代码求值完毕以前，页面中的其余内容都不会被浏览器加载或显示。</li>
+</ol>
+</blockquote>
+<h3 id="包含外部-JavaScript-文件"><a href="#包含外部-JavaScript-文件" class="headerlink" title="包含外部 JavaScript 文件"></a>包含外部 JavaScript 文件</h3><p>如果要通过 &lt;script&gt; 元素来包含外部 JavaScript 文件，则需指定 <strong>src 属性</strong>，该属性值是一个指向外部 JavaScript 文件的链接。</p>
+<blockquote>
+<p>注意：</p>
+<ol>
+<li>在解析（包括下载）外部 JavaScript 文件时，页面的处理会暂时停止。</li>
+<li>src 属性可指向当前 <strong>HTML 页面所在域之外</strong>的某个域中的完整 URL。</li>
+</ol>
+</blockquote>
+<p><br></p>
+<h2 id="script-标签的位置"><a href="#script-标签的位置" class="headerlink" title="script 标签的位置"></a>script 标签的位置</h2><p>传统的做法是将所有 &lt;script&gt; 元素都放在页面的 <strong>&lt;head&gt; 元素中</strong>，目的是把所有对外部文件（包括 CSS 文件和 JavaScript 文件）的引用都放在相同的地方。</p>
+<p>由于浏览器通常在遇到 &lt;body&gt; 标签时才开始呈现页面内容，为了减少浏览器呈现页面的延迟，现代 Web应用程序 一般会把全部 JavaScript 引用放在 <strong>&lt;body&gt; 元素</strong>中<strong>页面内容的后面</strong>。</p>
+<p><br></p>
+<h2 id="文档模式"><a href="#文档模式" class="headerlink" title="文档模式"></a>文档模式</h2><p>文档模式通过使用文档类型（doctype）切换实现，共有三种：</p>
+<ul>
+<li>混杂模式 quirks mode （默认）</li>
+<li><strong>标准模式</strong> standards mode</li>
+<li><strong>准标准模式</strong> almost standards mode</li>
+</ul>
+<p>使用 HTML5 指定 <em>标准模式</em>  方法如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML5 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">DOCTYPE</span> <span class="attr">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="noscript-元素"><a href="#noscript-元素" class="headerlink" title="noscript 元素"></a>noscript 元素</h2><p>使用 &lt;noscript&gt; 元素可以在以下情况下，指定浏览器中显示的替代内容，实现平稳退化：</p>
+<ul>
+<li>浏览器不支持脚本</li>
+<li>浏览器支持脚本，但脚本被禁用</li>
+</ul>
+<p><br><br><br><br><br></p>
+<h1 id="JavaScript-基本概念"><a href="#JavaScript-基本概念" class="headerlink" title="JavaScript 基本概念"></a>JavaScript 基本概念</h1><p><br></p>
+<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><p>指 变量、函数、属性的名字，或者 函数的参数，可以是按下列规则组合起来的 一个或多个字符：</p>
+<ul>
+<li><strong>首字符</strong> 为字母、下划线（_）或 美元符号（$）；</li>
+<li>其他字符可以是 字母、下划线、美元符号 或 数字；</li>
+<li>采用 <strong>驼峰大小写</strong> 格式。</li>
+</ul>
+<blockquote>
+<p>注意：<br>&emsp;&emsp;不能把 关键字、保留字、true、false、null 用作标识符。<br>&emsp;&emsp;<strong>关键字</strong>：<br>&emsp;&emsp;break, case, catch, continue, debugger, default, delete, do, else, finally, for, function, if, in, instanceof, new, return, switch, this, throw, try, typeof, var, void, while, with<br>&emsp;&emsp;<strong>保留字</strong>：<br>&emsp;&emsp;abstract, boolean, byte, char, class, const, debugger, double, enum, export, extends, final, float, goto, implements, import, int, interface, long, native, package, private, protected, public, short, static, super, synchronized, throws, transient, volatile</p>
+</blockquote>
+<p><br></p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>单行注释：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单行注释</span></span><br></pre></td></tr></table></figure></p>
+<p>块级注释：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 多行（块级）注释</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>ECMAScript 的变量是<strong>松散类型</strong>的，可以用来保存 <strong>任何类型</strong> 的数据。定义变量时，使用 <strong>var 操作符</strong>，此时定义的变量是 定义该变量的作用域 中的 <strong>局部变量</strong>。省略 var 操作符可以定义全局变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> message; <span class="comment">// 未经初始化的变量，值为 undefined</span></span><br><span class="line"><span class="keyword">var</span> message = <span class="string">'hi'</span>;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>ECMAScript 有 5 种基本数据类型（分别为 Undefined、Null、Boolean、Number 和 String）和 1 种复杂数据类型（Object 类型），不支持任何创建自定义类型的机制。</p>
+<img src="/2019/01/26/JavaScript-基础/JS数据类型.png" title="JavaScript数据类型">
+<h3 id="Undefined-类型"><a href="#Undefined-类型" class="headerlink" title="Undefined 类型"></a>Undefined 类型</h3><p>仅有一个值 undefined。未经初始化的变量 值为 undefined。一般而言，不需要显式地把一个变量设置为 undefined。</p>
+<h3 id="Null-类型"><a href="#Null-类型" class="headerlink" title="Null 类型"></a>Null 类型</h3><p>仅有一个值 null，表示一个 <strong>空对象指针</strong>。意在保存对象的变量，建议初始化为 null。</p>
+<h3 id="Boolean-类型"><a href="#Boolean-类型" class="headerlink" title="Boolean 类型"></a>Boolean 类型</h3><p>有两个字面值：true 和 false。可以对任何数据类型的值调用 Boolean() 函数，且总会返回一个 Boolean 值。在 <strong>流控制语句</strong>（如 if 语句）中，会 <strong>自动执行</strong> 相应的 <strong>Boolean 转换</strong>。<br>各种数据类型对应的 <em>Boolean转换规则</em> 如下：</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>转换为 true 的值</th>
+<th>转换为 false 的值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>String</td>
+<td>任何非空字符串</td>
+<td>“” （空字符串）</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>任何非零数字值（包括无穷大）</td>
+<td>0 和 NaN</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>任何对象</td>
+<td><strong>null</strong></td>
+</tr>
+<tr>
+<td>Undefined</td>
+<td>——</td>
+<td>undefined</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Number-类型"><a href="#Number-类型" class="headerlink" title="Number 类型"></a>Number 类型</h3><p>Number 类型采用 IEEE-754 格式表示 整数和浮点数值。其中，<strong>整数</strong> 数值字面量格式可以是 八进制、十进制、十六进制，但在进行算术计算时，统一使用十进制数值。另外，由于 <strong>浮点数值</strong> 所需内存空间是保存整数的两倍，因此，在下列情况下，数值会作为整数值来保存：</p>
+<ul>
+<li>小数点后没有跟任何数字（如 1.）</li>
+<li>浮点数值本身表示的就是一个整数（如 10.0）</li>
+</ul>
+<p>对于 <strong>极大</strong> 或 <strong>极小（小数点后有6个以上的0）</strong> 的数值，可使用 <strong>e表示法</strong> 表示。</p>
+<img src="/2019/01/26/JavaScript-基础/number类型.png" title="Number 类型">
+<p>其中，<strong>转型函数 Number()</strong> 的<em>转换规则</em>  如下：</p>
+<blockquote>
+<ul>
+<li>Boolean 值 true 和 false 分别返回 1 和 0；</li>
+<li>数字值 只是简单的传入和返回；</li>
+<li>null 值返回 0；</li>
+<li>undefined 值返回 NaN；</li>
+<li>对于 字符串：<ol>
+<li>只包含 数字，则将其转换为 十进制数；</li>
+<li>包含 有效的浮点格式，则转换为对应的 浮点数值；</li>
+<li>包含 有效的十六进制格式，则转换为相同大小的十进制整数；</li>
+<li>空字符串 转换为 0；</li>
+<li>包含除上述格式之外的字符，转换为 NaN；</li>
+</ol>
+</li>
+<li>对于 对象，先调用 valueOf() 并转换，若转换结果为 NaN，再调用 toString() 方法并进行转换。</li>
+</ul>
+</blockquote>
+<p>在处理 整数 时，我们常用 <strong>parseInt() 函数</strong>，对于字符串，其 <em>转换规则</em>  如下：</p>
+<blockquote>
+<ul>
+<li>从 第一个非空格字符 开始转换（始终忽略前导零）；</li>
+<li>若第一个字符不是 数字字符 或 负号，则返回 NaN（即 parseInt() 对空字符串返回 NaN）；</li>
+<li>解析过程 直到完成所有后续字符 或 遇到非数字字符；</li>
+<li>为避免转换过程中，由整数的进制问题导致错误，建议使用时在 parseInt() 的第二个参数中 明确指定基数。</li>
+</ul>
+</blockquote>
+<p>对于 <strong>parseFloat() 函数</strong>，转换规则与 parseInt() 类似，<em>不同点</em> 如下：</p>
+<blockquote>
+<ul>
+<li>字符串中 第一个小数点 有效；</li>
+<li>只解析 十进制值；</li>
+<li>若字符串包含的是可解析为整数的数，则返回整数。</li>
+</ul>
+</blockquote>
+<h3 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h3><p>String 类型用于表示由零或多个 16位 Unicode字符 组成的字符序列，即字符串。</p>
+<img src="/2019/01/26/JavaScript-基础/string类型.png" title="String 类型">
+<p>对于 <strong>转型函数 toString()</strong> ，可用于 数值、布尔值、对象和字符串值，其中，在调用数值的 toString() 方法时，可传递一个参数：输出数值的基数（默认十进制）。<br>&emsp;&emsp;由于 null 和 undefined 值没有 toString() 方法，在不确定要转换的值是否为 null 或 undefined 时，可使用 <strong>转型函数 String()</strong>，该函数可将任何类型的值转换为字符串，<em>转换规则</em> 如下：</p>
+<ul>
+<li>该值有 toString()  方法，则调用该方法并返回相应结果；</li>
+<li>值为 null，则返回 “null”；</li>
+<li>值为 undefined，则返回 “undefined”。</li>
+</ul>
+<h3 id="Object-类型"><a href="#Object-类型" class="headerlink" title="Object 类型"></a>Object 类型</h3><p>ECMAScript 中的对象 其实就是一组数据和功能的集合。Object 类型是所有它的实例的基础。Object 的每个实例 都具有下列属性和方法：</p>
+<ul>
+<li><strong>constructor</strong>：保存着 用于创建当前对象的函数；</li>
+<li><strong>hasOwnProperty( propertyName )</strong>：用于检查 给定的属性 在当前对象实例中是否存在；</li>
+<li><strong>isPrototypeOf( object )</strong>：用于检查 传入的对象是否是当前对象的原型；</li>
+<li><strong>propertyIsEnumerable( propertyName )</strong>： 用于检查 给定的属性是否可使用 for-in 语句；</li>
+<li><strong>toLocaleString()</strong> ：返回对象的 字符串表示，该字符串与执行环境的地区对应；</li>
+<li><strong>toString()</strong> ：返回对象的 字符串表示；</li>
+<li><strong>valueOf()</strong> ：返回对象的 字符串、数值 或 布尔值 表示。</li>
+</ul>
+<h3 id="typeof-操作符"><a href="#typeof-操作符" class="headerlink" title="typeof 操作符"></a>typeof 操作符</h3><p>typeof 操作符用于检测 给定变量的数据类型。对一个值使用 typeof 操作符可能返回下列某个字符串：</p>
+<ul>
+<li><strong>“undefined”</strong> —— 值 <strong>未定义</strong>，或 变量<strong>未初始化</strong>；</li>
+<li><strong>“boolean”</strong> —— 值是 布尔值；</li>
+<li><strong>“string”</strong> —— 值是 字符串；</li>
+<li><strong>“number”</strong> —— 值为 数值；</li>
+<li><strong>“object”</strong> —— 值为 对象 或 <strong>null</strong>；</li>
+<li><strong>“function”</strong> —— 值为 函数。</li>
+</ul>
+<p><br></p>
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><p>ECMAScript 规定的操作符有以下 10 种：</p>
+<img src="/2019/01/26/JavaScript-基础/操作符.png" title="JS操作符">
+<h3 id="一元操作符："><a href="#一元操作符：" class="headerlink" title="一元操作符："></a>一元操作符：</h3><img src="/2019/01/26/JavaScript-基础/一元操作符.png" title="一元操作符">
+<h3 id="位操作符："><a href="#位操作符：" class="headerlink" title="位操作符："></a>位操作符：</h3><img src="/2019/01/26/JavaScript-基础/位操作符.png" title="位操作符">
+<h3 id="布尔操作符："><a href="#布尔操作符：" class="headerlink" title="布尔操作符："></a>布尔操作符：</h3><img src="/2019/01/26/JavaScript-基础/布尔操作符.png" title="布尔操作符">
+<h3 id="乘性操作符："><a href="#乘性操作符：" class="headerlink" title="乘性操作符："></a>乘性操作符：</h3><img src="/2019/01/26/JavaScript-基础/乘性操作符.png" title="乘性操作符">
+<h3 id="加性操作符："><a href="#加性操作符：" class="headerlink" title="加性操作符："></a>加性操作符：</h3><img src="/2019/01/26/JavaScript-基础/加性操作符.png" title="加性操作符">
+<h3 id="关系操作符："><a href="#关系操作符：" class="headerlink" title="关系操作符："></a>关系操作符：</h3><img src="/2019/01/26/JavaScript-基础/关系操作符.png" title="关系操作符">
+<h3 id="相等操作符："><a href="#相等操作符：" class="headerlink" title="相等操作符："></a>相等操作符：</h3><img src="/2019/01/26/JavaScript-基础/相等操作符.png" title="相等操作符">
+<h3 id="条件操作符："><a href="#条件操作符：" class="headerlink" title="条件操作符："></a>条件操作符：</h3><p>条件操作符 语法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value = boolean_expression ? true_value : false_value ;</span><br></pre></td></tr></table></figure>
+<h3 id="赋值操作符："><a href="#赋值操作符：" class="headerlink" title="赋值操作符："></a>赋值操作符：</h3><img src="/2019/01/26/JavaScript-基础/赋值操作符.png" title="赋值操作符">
+<h3 id="逗号操作符："><a href="#逗号操作符：" class="headerlink" title="逗号操作符："></a>逗号操作符：</h3><p>逗号操作符 多用于：</p>
+<ol>
+<li>声明多个变量；</li>
+<li>赋值（返回表达式中最后一项）</li>
+</ol>
+<p><br></p>
+<h2 id="流控制语句"><a href="#流控制语句" class="headerlink" title="流控制语句"></a>流控制语句</h2><p>EXMAScript 规定的语句有以下几种：</p>
+<img src="/2019/01/26/JavaScript-基础/JS语句.png" title="JS语句">
+<h3 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) statement1 <span class="keyword">else</span> statement2</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (condition1) &#123;</span><br><span class="line">	<span class="comment">// statement1</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (condition2) &#123;</span><br><span class="line">	<span class="comment">// statement2</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="comment">// statement3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="do-while-语句"><a href="#do-while-语句" class="headerlink" title="do-while 语句"></a>do-while 语句</h3><p>循环体内的代码至少会被执行一次（后测试循环语句）。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">	<span class="comment">// statement</span></span><br><span class="line">&#125; <span class="keyword">while</span> (expression);</span><br></pre></td></tr></table></figure></p>
+<h3 id="while-语句"><a href="#while-语句" class="headerlink" title="while 语句"></a>while 语句</h3><p>循环体内的代码有可能永远不会被执行（前测试语句）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (expression) statement</span><br></pre></td></tr></table></figure>
+<h3 id="for-语句"><a href="#for-语句" class="headerlink" title="for 语句"></a>for 语句</h3><p>前测试循环语句。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (initialization; expression; post-loop-expression) &#123;</span><br><span class="line">	<span class="comment">// statement</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="for-in-语句"><a href="#for-in-语句" class="headerlink" title="for-in 语句"></a>for-in 语句</h3><p>for-in 语句用来 枚举对象的属性。通过 for-in 循环输出的属性名的顺序是不可预测的。另外，建议在使用 for-in 循环之前，先检测确认该对象的值 不是 null 或 undefined。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (property <span class="keyword">in</span> expression) &#123;</span><br><span class="line">	<span class="comment">// statement</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="label-语句"><a href="#label-语句" class="headerlink" title="label 语句"></a>label 语句</h3><p>使用 label 语句可以在代码中添加标签。加标签的语句一般与 for 语句、break 和 continue 语句等联合使用，从而在执行中返回 代码特定位置（这种联合使用 多发生在 <strong>嵌套循环</strong> 的情况下）。<br>如果使用 label 语句，一定要使用描述性的标签，同时不要嵌套过多的循环。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label: statement</span><br></pre></td></tr></table></figure>
+<h3 id="with-语句"><a href="#with-语句" class="headerlink" title="with 语句"></a>with 语句</h3><p>with 语句用于将代码的作用域设置到一个特定的对象中，以简化多次编写同一个对象的工作。【不建议使用】<br>代码示例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span>(location) &#123;</span><br><span class="line">	<span class="keyword">var</span> qs = search.substring(<span class="number">1</span>); <span class="comment">// 即 location.search.substring</span></span><br><span class="line">	<span class="keyword">var</span> hostName = hostname;</span><br><span class="line">	<span class="keyword">var</span> url = href;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="switch-语句"><a href="#switch-语句" class="headerlink" title="switch 语句"></a>switch 语句</h3><p>当有多个判别条件时，可以使用 switch 语句。在 switch 语句中可以使用任何数据类型，每个 case 的值也可以是 常量、变量或表达式。需要注意的是，switch 语句在比较值时，使用的是 <strong>全等操作符</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (expression) &#123;</span><br><span class="line">	<span class="keyword">case</span> value: statement</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> value: statement</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">default</span>: statement</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>函数的基本语法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">functionName</span> (<span class="params">arg0, arg1, ..., argN</span>) </span>&#123;</span><br><span class="line">	statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>关于 return 语句：</strong></p>
+<ul>
+<li>任何函数 在任何时候 都可通过 return语句后跟要返回的值 来实现返回值；</li>
+<li>函数在定义时不必指定是否返回值（未指定返回值的函数，返回 undefined）；</li>
+<li>return 语句也可以不带任何返回值；</li>
+<li>函数体内 return 语句后的语句不再执行；</li>
+<li>要么让函数 <strong>始终都返回一个值</strong>，要么 <strong>永远都不要返回值</strong>【<strong>推荐做法</strong>】</li>
+</ul>
+<p><strong>关于 函数参数：</strong></p>
+<ul>
+<li>ECMAScript 中的参数在内部使用一个 <strong>数组</strong> 来表示的（也就是说，函数参数 可以有任意个，也可以是任何数据类型）；</li>
+<li>在函数体内可通过 <strong>arguments 对象</strong> 来访问该函数的参数数组，从而获取传递给函数的每一个参数；</li>
+<li>命名的参数只提供便利，但不是必须的。解析器不会验证命名参数；</li>
+<li>通过访问 arguments 对象的 <strong>length 属性</strong>，可获知有多少个参数传递给了函数（也就是说，arguments 对象的长度，由传入的参数个数决定，而非定义函数时的命名参数个数）；</li>
+<li>arguments 对象 可以与 命名参数 一起使用。其中，arguments 对象的值永远与对应的命名参数保持同步（内存空间相独立，但 <strong>值同步</strong>）；</li>
+<li>没传递值的命名参数，将自动被赋予 undefined 值；</li>
+<li>参数传递的是 <strong>值</strong>，不可能通过 引用 传递参数。</li>
+</ul>
+<p><strong>关于 函数重载：</strong></p>
+<ul>
+<li>由于不存在 <strong>函数签名</strong>（参数类型和数量） 的概念，ECMAScript函数不能重载；</li>
+<li>通过检查传入函数中的 参数的类型和数量 并作出不同的反映，可以模拟方法的重载。</li>
+</ul>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/jiafengfu">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

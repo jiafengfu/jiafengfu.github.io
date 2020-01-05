@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="符佳凤的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        ESLint 代码检查工具 - FU的博客 | FU&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Fashion passes ,   style remains. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Jiafeng Fu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于-ESLint"><span class="toc-text">关于 ESLint</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#全局安装"><span class="toc-text">全局安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#局部安装"><span class="toc-text">局部安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#规则配置模式"><span class="toc-text">规则配置模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#webpack-中配置-eslint-（vue版）"><span class="toc-text">webpack 中配置 eslint （vue版）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vue-cli-的-eslintrc-js-配置文件："><span class="toc-text">vue-cli 的 .eslintrc.js 配置文件：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#VSCode-集成"><span class="toc-text">VSCode 集成</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> Fashion passes ,   style remains. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        ESLint 代码检查工具
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-09-26 00:35:25</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#工具" title="工具">工具</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="关于-ESLint"><a href="#关于-ESLint" class="headerlink" title="关于 ESLint"></a>关于 ESLint</h1><p>ESLint 是一个插件化的 javascript 代码检测工具，借助 ESLint，可将 <strong>静态代码分析</strong> 和 <strong>问题代码协助修复</strong> 集成到 <strong>编码</strong>、<strong>提交</strong> 和 <strong>打包</strong> 过程中，及早发现并协助修复代码中：</p>
+<ol>
+<li>有语法错误的部分</li>
+<li>不符合约定的样式准则的部分</li>
+<li>不符合约定的最佳实践的部分</li>
+</ol>
+<p>在项目开发中获得如下收益：</p>
+<ol>
+<li>在执行代码之前发现并修复语法错误，减少调试耗时和潜在 bug</li>
+<li>保证项目的 <strong>编码风格统一</strong>，提高可维护性</li>
+<li>督促团队成员在编码时遵守约定的最佳实践，提高代码质量</li>
+</ol>
+<p><br><br><br></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p><br></p>
+<h2 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g eslint</span><br></pre></td></tr></table></figure>
+<p>初始化配置文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ eslint --init</span><br></pre></td></tr></table></figure></p>
+<h2 id="局部安装"><a href="#局部安装" class="headerlink" title="局部安装"></a>局部安装</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install eslint --save-dev</span><br></pre></td></tr></table></figure>
+<p>初始化配置文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./node_modules/.bin/eslint --init</span><br></pre></td></tr></table></figure></p>
+<p><br><br><br></p>
+<h1 id="规则配置模式"><a href="#规则配置模式" class="headerlink" title="规则配置模式"></a>规则配置模式</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">规则名： [ 错误级别， 附加选项 ]</span><br><span class="line">规则名： 错误级别</span><br></pre></td></tr></table></figure>
+<p>ESLint 定义了 <strong>三种错误级别</strong>：</p>
+<ul>
+<li><p><strong>“off”</strong> 或 <strong>0</strong> - 关闭，不校验该规则</p>
+</li>
+<li><p><strong>“warn”</strong> 或 <strong>1</strong> - 警告，不影响 exit code</p>
+</li>
+<li><p><strong>“error”</strong> 或 <strong>2</strong> - 错误，触发该规则时 exit code 为 1</p>
+</li>
+</ul>
+<p><br><br><br></p>
+<h1 id="webpack-中配置-eslint-（vue版）"><a href="#webpack-中配置-eslint-（vue版）" class="headerlink" title="webpack 中配置 eslint （vue版）"></a>webpack 中配置 eslint （vue版）</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  test: <span class="regexp">/\.(js|vue)$/</span>,</span><br><span class="line">  loader: <span class="string">'eslint-loader'</span>,</span><br><span class="line">  enforce: <span class="string">'pre'</span>,</span><br><span class="line">  include: [resolve(<span class="string">'src'</span>), resolve(<span class="string">'test'</span>)],</span><br><span class="line">  options: &#123;</span><br><span class="line">    formatter: <span class="built_in">require</span>(<span class="string">'eslint-friendly-formatter'</span>),</span><br><span class="line">    emitWarning: !config.dev.showEslintErrorsInOverlay</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br><br><br></p>
+<h1 id="vue-cli-的-eslintrc-js-配置文件："><a href="#vue-cli-的-eslintrc-js-配置文件：" class="headerlink" title="vue-cli 的 .eslintrc.js 配置文件："></a>vue-cli 的 .eslintrc.js 配置文件：</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">//此项是用来告诉eslint找当前配置文件不能往父级查找</span></span><br><span class="line">  root: <span class="literal">true</span>,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//此项是用来指定eslint解析器的，解析器必须符合规则，babel-eslint解析器是对babel解析器的包装使其与ESLint解析</span></span><br><span class="line">  parser: <span class="string">'babel-eslint'</span>,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//此项是用来指定javaScript语言类型和风格，sourceType用来指定js导入的方式，默认是script，此处设置为module，指某块导入方式</span></span><br><span class="line">  parserOptions: &#123;</span><br><span class="line">    sourceType: <span class="string">'module'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//此项指定环境的全局变量，下面的配置指定为浏览器环境</span></span><br><span class="line">  env: &#123;</span><br><span class="line">    browser: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style</span></span><br><span class="line">  <span class="comment">// 此项是用来配置标准的js风格，就是说写代码的时候要规范的写，如果你使用vs-code我觉得应该可以避免出错</span></span><br><span class="line">  extends: <span class="string">'standard'</span>,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// required to lint *.vue files</span></span><br><span class="line">  <span class="comment">// 此项是用来提供插件的，插件名称省略了eslint-plugin-，下面这个配置是用来规范html的</span></span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="string">'html'</span></span><br><span class="line">  ],</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// add your custom rules here</span></span><br><span class="line">  <span class="comment">// 下面这些rules是用来设置从插件来的规范代码的规则，使用必须去掉前缀eslint-plugin-</span></span><br><span class="line">  <span class="comment">// 主要有如下的设置规则，可以设置字符串也可以设置数字，两者效果一致</span></span><br><span class="line">  <span class="comment">// "off" -&gt; 0 关闭规则</span></span><br><span class="line">  <span class="comment">// "warn" -&gt; 1 开启警告规则</span></span><br><span class="line">  <span class="comment">//"error" -&gt; 2 开启错误规则</span></span><br><span class="line">  <span class="comment">// 了解了上面这些，下面这些代码相信也看的明白了</span></span><br><span class="line">  <span class="string">'rules'</span>: &#123;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// allow paren-less arrow functions</span></span><br><span class="line">    <span class="string">'arrow-parens'</span>: <span class="number">0</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// allow async-await</span></span><br><span class="line">    <span class="string">'generator-star-spacing'</span>: <span class="number">0</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// allow debugger during development</span></span><br><span class="line">    <span class="string">'no-debugger'</span>: process.env.NODE_ENV === <span class="string">'production'</span> ? <span class="number">2</span> : <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="string">'no-multi-str'</span>: <span class="number">2</span>, <span class="comment">// 字符串不能用\换行</span></span><br><span class="line">    <span class="string">'no-unreachable'</span>: <span class="number">2</span>, <span class="comment">// 不能有无法执行的代码</span></span><br><span class="line">    <span class="string">'no-use-before-define'</span>: <span class="number">2</span>, <span class="comment">// 违背顶以前不能使用</span></span><br><span class="line">    <span class="string">'no-with'</span>: <span class="number">2</span>, <span class="comment">// 禁用with</span></span><br><span class="line">    <span class="string">'arrow-spacing'</span>: <span class="number">0</span>, <span class="comment">// =&gt; 的前/后括号</span></span><br><span class="line">    <span class="string">'brace-style'</span>: [<span class="number">1</span>, <span class="string">'1tbs'</span>], <span class="comment">// 大括号风格</span></span><br><span class="line">    <span class="string">'comma-style'</span>: [<span class="number">2</span>, <span class="string">'1ast'</span>], <span class="comment">// 逗号风格，换行是在行首还是行尾</span></span><br><span class="line">    <span class="string">'curly'</span>: [<span class="number">2</span>, <span class="string">'all'</span>], <span class="comment">// 必须使用 if()&#123;&#125; 中的&#123;&#125;</span></span><br><span class="line">    <span class="string">'indent'</span>: [<span class="number">2</span>, <span class="number">4</span>], <span class="comment">//缩进风格</span></span><br><span class="line">    <span class="string">'use-isnan'</span>: <span class="number">2</span>, <span class="comment">// 禁止比较时使用 NaN，只能用 isNan()</span></span><br><span class="line">    <span class="string">'semi-spacing'</span>: [<span class="number">0</span>, &#123;<span class="string">"before"</span>: <span class="literal">false</span>, <span class="string">"after"</span>: <span class="literal">true</span>&#125;], <span class="comment">// 分号前后空格</span></span><br><span class="line">    <span class="string">'spaced-comment'</span>: <span class="number">0</span>, <span class="comment">// 注释风格要不要空格</span></span><br><span class="line">    <span class="string">'space-before-blocks'</span>: [<span class="number">0</span>, <span class="string">'always'</span>], <span class="comment">// 不以新行开始的代码块 &#123; 前要不要空格</span></span><br><span class="line">    <span class="string">'eol-last'</span>: <span class="number">0</span>, <span class="comment">// 文件 不以单一的换行符结束</span></span><br><span class="line">    <span class="string">'space-before-function-paren'</span>: [<span class="number">0</span>, <span class="string">"always"</span>], <span class="comment">// 函数定义时，括号前面是否要空格</span></span><br><span class="line">    <span class="string">'no-trailing-space'</span>: <span class="number">0</span>, <span class="comment">// 一行结束空格</span></span><br><span class="line">    <span class="string">'quotes'</span>: [<span class="number">0</span>, <span class="string">'single'</span>], <span class="comment">// 引号类型 '' "" ``</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br><br><br></p>
+<h1 id="VSCode-集成"><a href="#VSCode-集成" class="headerlink" title="VSCode 集成"></a>VSCode 集成</h1><p><strong>代码提示</strong><br>工具： VSCode ESLint 插件<br>使用：在 VSCode 设置中将 <code>eslint.enable</code> 设置为 <code>true</code></p>
+<p><strong>代码修复</strong><br>工具：VSCode Prettier 插件<br>使用：在 VSCode 设置中将 <code>prettier.eslintIntegration</code> 设置为 <code>true</code>，prettier 插件执行格式化时将使用 prettier-eslint 完成下述操作：</p>
+<ol>
+<li>使用 prettier 格式化代码</li>
+<li>对上一步格式化过的代码执行 <code>eslint --fix</code></li>
+</ol>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/jiafengfu">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

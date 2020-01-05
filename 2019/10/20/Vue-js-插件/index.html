@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="符佳凤的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Vue.js 插件 - FU的博客 | FU&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Fashion passes ,   style remains. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Jiafeng Fu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前端路由-与-vue-router"><span class="toc-text">前端路由 与 vue-router</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-router"><span class="toc-text">vue-router</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#路由跳转"><span class="toc-text">路由跳转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-router-导航钩子"><span class="toc-text">vue-router 导航钩子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#状态管理-与-Vuex"><span class="toc-text">状态管理 与 Vuex</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#状态管理与使用场景"><span class="toc-text">状态管理与使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vuex-基本用法"><span class="toc-text">Vuex 基本用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vuex-高级用法"><span class="toc-text">Vuex 高级用法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#getters"><span class="toc-text">getters</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#actions"><span class="toc-text">actions</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#modules"><span class="toc-text">modules</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> Fashion passes ,   style remains. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Vue.js 插件
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-10-20 23:51:58</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Vue.js实战" title="Vue.js实战">Vue.js实战</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>插件的使用方式：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Vue.use(MyPlugin)</span><br><span class="line">Vue.use(MyPlugin, &#123;</span><br><span class="line">    <span class="comment">// 参数</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h2 id="前端路由-与-vue-router"><a href="#前端路由-与-vue-router" class="headerlink" title="前端路由 与 vue-router"></a>前端路由 与 vue-router</h2><p><strong>单页面富应用（SPA）</strong>= <strong>前后端分离</strong> +  <strong>前端路由</strong>。<br><strong><u>前后端分离</u></strong> 的开发模式是：后端只提供 API 来返回数据，前端通过 Ajax 获取数据后，再用一定的方式渲染到页面里（后端专注于 数据，前端专注于 交互和可视化；web与移动端可共享一套 API ；首屏渲染 需要加载 js 和 css ）。<br><strong><u>前端路由</u></strong> ：由前端来维护一个路由规则。有两种实现：</p>
+<ol>
+<li><strong>利用 url 的 hash</strong>，即锚点（#）：JavaScript 通过 hashChange 事件监听 url 的变化，IE7 及以下需要用轮询；</li>
+<li><strong>利用 HTML5 的 History 模式</strong>：需要服务端支持。</li>
+</ol>
+<h3 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h3><p>路由不同的页面，实际上是 <strong>动态加载不同的组件</strong>。其中，每个页面对应一个组件，也就是对应一个 <code>.vue</code> 文件。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"><span class="keyword">import</span> HelloWorld <span class="keyword">from</span> <span class="string">'@/components/HelloWorld'</span></span><br><span class="line"><span class="keyword">import</span> First <span class="keyword">from</span> <span class="string">'@/components/views/First'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(&#123;</span><br><span class="line">  routes: [ &#123;</span><br><span class="line">      path: <span class="string">'/first'</span>,</span><br><span class="line">      name: <span class="string">'First'</span>,</span><br><span class="line">      component: First</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">      path: <span class="string">'/'</span>,</span><br><span class="line">      name: <span class="string">'HelloWorld'</span>,</span><br><span class="line">      component: HelloWorld</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">      path: <span class="string">'*'</span>,  <span class="comment">// 访问的路径不存在，则重定向到 HelloWorld</span></span><br><span class="line">      name: <span class="string">'HelloWorld'</span>,</span><br><span class="line">      component: HelloWorld</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>Routers 里每一项的 <code>path</code> 属性就是指定 当前匹配的路径，可以带参数； <code>component</code> 是映射的组件。webpack 会把每一个路由都打包为一个 js 文件，在请求到该页面时，才去加载这个页面的 js，即异步实现的 <strong>懒加载（按需加载）</strong>。</p>
+<p>在 new Router() 的参数中，设置 <code>mode: &#39;history&#39;</code> 会开启 HTML5 的 history 模式；默认使用 <code>‘#’</code>来设置路径。</p>
+<p>在 Vue 根实例中，通过 <strong><router-view></router-view></strong> 来挂载所有的路由组件。运行网页时，<router-view> 会根据当前路由 动态渲染 不同的页面组件。网页中一些公共部分，如顶部导航栏、侧边导航栏、底部版权信息等，可以直接写在 根实例 中，与 <router-view> 同级。<br>通过 <code>this.$route</code> 可以访问当前路由的具体信息。</router-view></router-view></p>
+<h3 id="路由跳转"><a href="#路由跳转" class="headerlink" title="路由跳转"></a>路由跳转</h3><p>vue-router 有两种跳转页面的方法：</p>
+<ol>
+<li>使用内置的 <code>&lt;router-link&gt;</code> 组件，它默认会被渲染成 <a>；</a></li>
+<li>使用 router 实例的事件方法，如 <code>this.$router.push(targetUrl)</code> ；</li>
+</ol>
+<p>其中，使用 <router-link> 在 HTML5 的 history 模式下会被拦截点击，避免浏览器重新加载页面。<router-link> 的常用 prop 有：</router-link></router-link></p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>to</td>
+<td>指定要跳转的路径</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>指定渲染成什么标签</td>
+</tr>
+<tr>
+<td>replace</td>
+<td>不会留下 History 记录</td>
+</tr>
+<tr>
+<td>active-class</td>
+<td>修改默认的 路由匹配成功时的类名（router-link-active）</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>$router 的常用方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>push</td>
+<td>添加要跳转到的新路径，会产生新的 history 记录</td>
+</tr>
+<tr>
+<td>replace</td>
+<td>替换当前的 history 记录</td>
+</tr>
+<tr>
+<td>go</td>
+<td>在 history 记录中向前或后退多少步，参数是整数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vue-router-导航钩子"><a href="#vue-router-导航钩子" class="headerlink" title="vue-router 导航钩子"></a>vue-router 导航钩子</h3><p>vue-router 提供了 导航钩子 <strong>beforeEach</strong> 和 <strong>afterEach</strong> ，分别在路由即将改变前和改变后触发。通过这两个钩子，可以做一些事情来提升用户体验：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * beforeEach 在路由即将改变前触发</span></span><br><span class="line"><span class="comment"> * @param to, 即将要进入的目标的路由对象</span></span><br><span class="line"><span class="comment"> * @param from, 当前导航即将要离开的路由对象</span></span><br><span class="line"><span class="comment"> * @param next, 调用该方法后，才能进入下一个钩子</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 在页面路由改变时，统一设置网页标题</span></span><br><span class="line">  <span class="built_in">window</span>.document.title = to.meta.title;</span><br><span class="line">  <span class="comment">// 网页登录校验，未登录则跳转至登录页</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">window</span>.localStorage.getItem(<span class="string">'token'</span>)) &#123;</span><br><span class="line">    next();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    next(<span class="string">'/login'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * afterEach 在路由改变后触发</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">router.afterEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 切换页面后，滚动条返回顶端（滚动条默认保持上一个页面停留的位置）</span></span><br><span class="line">  <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p><br><br><br><br><br></p>
+<h2 id="状态管理-与-Vuex"><a href="#状态管理-与-Vuex" class="headerlink" title="状态管理 与 Vuex"></a>状态管理 与 Vuex</h2><h3 id="状态管理与使用场景"><a href="#状态管理与使用场景" class="headerlink" title="状态管理与使用场景"></a>状态管理与使用场景</h3><p>一个组件可以分为 数据（model）和 视图（view），其基本的运行模式是：数据更新时，视图也会自动更新；在视图中又可以绑定一些事件，触发 methods 里指定的方法，从而可以改变数据、更新视图。</p>
+<p>在实际业务中，会有 <strong>跨组件共享数据</strong> 的需求（非父子组件：跨级组件、兄弟组件），而 <strong>Vuex</strong> 的设计，就是用来 <strong>统一管理组件状态</strong> 的。</p>
+<h3 id="Vuex-基本用法"><a href="#Vuex-基本用法" class="headerlink" title="Vuex 基本用法"></a>Vuex 基本用法</h3><p>npm安装：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save vuex</span><br></pre></td></tr></table></figure></p>
+<p>在项目入口文件 main.js 里，通过 Vue.use() 使用：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    <span class="comment">// vuex 的配置</span></span><br><span class="line">    state: &#123;</span><br><span class="line">        count: <span class="number">0</span>,</span><br><span class="line">        list: [<span class="number">1</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">26</span>, <span class="number">35</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        increament(state, n=<span class="number">1</span>) &#123;</span><br><span class="line">            state.count += n;</span><br><span class="line">        &#125;,</span><br><span class="line">        decrease(state) &#123;</span><br><span class="line">            state.count --;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    getters: &#123;</span><br><span class="line">        filteredList: <span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> state.list.filter( <span class="function"><span class="params">item</span> =&gt;</span> item &lt; <span class="number">10</span> );</span><br><span class="line">        &#125;,</span><br><span class="line">        listCount: <span class="function">(<span class="params">state, getters</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> getters.filteredList.length;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;，</span><br><span class="line">    actions: &#123;</span><br><span class="line">        increment (context) &#123;</span><br><span class="line">            context.commit(<span class="string">'increment'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">store,  <span class="comment">// 使用 vuex</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>仓库 store 包含了应用的数据（状态）和操作过程。Vuex 里的数据都是响应式的，任何组件使用同一 store 的数据时，只要 store 的数据变化，对应的组件就会立即更新。</p>
+<p>数据保存在 Vuex 选项的 <strong>state</strong> 字段内，在任何组件内，可以直接通过 <code>$store.state.</code> 读取（注意：来自 store 的数据只能读取，不能手动改变）。</p>
+<p>改变 store 中数据的唯一途径就是 显示地提交 <strong>mutations</strong>，它是 Vuex的第二个选项，用来<strong>直接修改 state 里的数据</strong>。</p>
+<ol>
+<li>在组件内，通过 this.$store.commit 方法来执行 mutations（组件只负责提交一个事件名， Vuex 对应的 mutations 来完成业务逻辑）：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">    handleIncrement () &#123;</span><br><span class="line">        <span class="keyword">this</span>.$store.commit( <span class="string">'increment'</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>mutations 的第二个参数 可以是 数字、字符串或对象等类型，当一个参数不够用时，可以传入一个对象，无限扩展。</p>
+<ol>
+<li>提交 mutation 的另一种方式是：直接使用包含 type 属性的对象：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line">mutations: &#123;</span><br><span class="line">    increment (state, params) &#123;</span><br><span class="line">        state.count += params.count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// index.vue</span></span><br><span class="line"><span class="keyword">this</span>.$store.commit(&#123;</span><br><span class="line">    type: <span class="string">'increment'</span>,</span><br><span class="line">    count: <span class="number">10</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意：mutation 里尽量不要 异步操作数据。</p>
+<h3 id="Vuex-高级用法"><a href="#Vuex-高级用法" class="headerlink" title="Vuex 高级用法"></a>Vuex 高级用法</h3><h4 id="getters"><a href="#getters" class="headerlink" title="getters"></a>getters</h4><p>将获取 store 中的数据的方法提取出来，放在 getters 中，便于统一管理。getter 可以依赖其他的 getter，把 getter 作为第二个参数即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.vue</span></span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;div&gt;&#123;&#123; list &#125;&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;div&gt;&#123;&#123; listCount &#125;&#125;&lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">        computed: &#123;</span><br><span class="line">            list () &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.$store.getters.filteredList;</span><br><span class="line">            &#125;,</span><br><span class="line">            listCount () &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.$store.getters.listCount;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h4><p>actions 里面提交的是 mutation，并且可以 <strong>异步操作</strong> 业务逻辑。</p>
+<p>action 在组件内通过 <strong>$store.dispatch</strong> 触发。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">    handleActionIncrement () &#123;</span><br><span class="line">        <span class="keyword">this</span>.$store.dispatch( <span class="string">'increment'</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们通过 Promise 异步方案 来模拟一次 延迟提交mutation：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    </span><br><span class="line">    actions: &#123;</span><br><span class="line">        asyncIncrement (context) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>( <span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">                setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                    context.commit(<span class="string">'increment'</span>);</span><br><span class="line">                    resolve();</span><br><span class="line">                &#125;, <span class="number">1000</span>);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// index.vue</span></span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &#123;&#123; count &#125;&#125;</span><br><span class="line">        &lt;button @click=<span class="string">"handleAsyncIncrement"</span>&gt;<span class="keyword">async</span> +<span class="number">1</span>&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">    export default &#123;</span></span><br><span class="line"><span class="regexp">        computed: &#123;</span></span><br><span class="line"><span class="regexp">            count () &#123;</span></span><br><span class="line"><span class="regexp">                return this.$store.state.count;</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">        &#125;,</span></span><br><span class="line"><span class="regexp">        methods: &#123;</span></span><br><span class="line"><span class="regexp">            handleAsyncIncrement () &#123;</span></span><br><span class="line"><span class="regexp">                this.$store.dispatch('asyncIncrement').then( () =&gt; &#123;</span></span><br><span class="line"><span class="regexp">                    console.log(this.$store.state.count); /</span><span class="regexp">/ 1</span></span><br><span class="line"><span class="regexp">                &#125;);</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>建议：<br>&emsp;&emsp;涉及改变数据的，就使用 mutations；<br>&emsp;&emsp;存在业务逻辑的，就用 actions。</p>
+</blockquote>
+<p><br></p>
+<h4 id="modules"><a href="#modules" class="headerlink" title="modules"></a>modules</h4><p><strong>modules</strong> 用来 <strong>将 store 分割到不同模块</strong>。当你的项目足够大时，store 里的 state、getters、mutations、actions 会非常多，都放在 main.js 里显得不是很友好，而使用 modules 可以将它们写到不同的文件中。<strong>每个 module 拥有自己的 state、getters、mutations、actions</strong> ，而且可以 <strong>多层嵌套</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> moduleA = &#123;</span><br><span class="line">    state: &#123; ... &#125;,</span><br><span class="line">    mutations: &#123; ... &#125;,</span><br><span class="line">    actions: &#123; ... &#125;,</span><br><span class="line">    getters: &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> moduleB = &#123;</span><br><span class="line">    state: &#123; ... &#125;,</span><br><span class="line">    mutations: &#123; ... &#125;,</span><br><span class="line">    actions: &#123; ... &#125;,</span><br><span class="line">    getters: &#123; </span><br><span class="line">        sumCount (state, getters, rootState) &#123;</span><br><span class="line">            <span class="keyword">return</span> state.count + rootState.count;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    modules: &#123;</span><br><span class="line">        a: moduleA,</span><br><span class="line">        b: moduleB</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">store.state.a   <span class="comment">// moduleA 的状态 </span></span><br><span class="line">store.state.b   <span class="comment">// moduleB 的状态</span></span><br></pre></td></tr></table></figure>
+<p>module 的 mutation 和 getter 接收的第一个参数 state 是 <strong>当前模块的状态</strong>。在 actions 和 getters 中，可以接受第三个参数 <strong>rootState</strong>，来访问 <strong>根节点的状态</strong>。</p>
+<p><br><br><br><br><br></p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/jiafengfu">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

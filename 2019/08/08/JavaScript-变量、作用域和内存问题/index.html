@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="符佳凤的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        JavaScript 变量、作用域和内存问题 - FU的博客 | FU&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Fashion passes ,   style remains. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Jiafeng Fu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基本类型和引用类型的值"><span class="toc-text">基本类型和引用类型的值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#执行环境及作用域"><span class="toc-text">执行环境及作用域</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#垃圾收集"><span class="toc-text">垃圾收集</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> Fashion passes ,   style remains. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        JavaScript 变量、作用域和内存问题
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-08-08 20:28:03</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#JavaScript高级程序设计" title="JavaScript高级程序设计">JavaScript高级程序设计</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="基本类型和引用类型的值"><a href="#基本类型和引用类型的值" class="headerlink" title="基本类型和引用类型的值"></a>基本类型和引用类型的值</h1><p>JavaScript采用松散类型变量<br>&emsp;&emsp;<strong>松散类型变量</strong> – 在特定时间用于保存特定值的一个名字，<strong>变量的值</strong> 及其 <strong>数据类型</strong> 可以在脚本的生命周期内改变。</p>
+<p><br></p>
+<p><strong>基本类型值</strong> </p>
+<ul>
+<li>简单的数据段；  </li>
+<li>按值访问；  </li>
+<li>可以操作保存在变量中的实际的值（栈内存，固定大小）；</li>
+</ul>
+<p><br></p>
+<p><strong>引用类型值</strong> </p>
+<ul>
+<li>可能由多个值构成的对象；  </li>
+<li>按引用访问；  </li>
+<li>实际上是在操作对象的引用，而不是实际的对象（堆内存）；</li>
+<li>当复制保存着对象的某个变量时，操作的是对象的引用；在为对象添加属性时，操作的是实际的对象（JS 不允许直接访问内存中的位置）；</li>
+<li>只能给 引用类型值 动态地添加属性。</li>
+</ul>
+<p><br></p>
+<p><strong>复制变量值</strong><br>基本类型值 会在变量对象上 创建一个新值，然后把该值 复制 到为新变量分配的位置上；<br>&emsp;&emsp;引用类型值 也会在变量对象上 创建一个新值，然后把该值 复制 到为新变量分配的位置上，这个值的副本 实际上是一个指针，指向 存储在堆中 的一个对象。<br><br></p>
+<p><strong>传递参数</strong><br>ECMAScript 中，所有函数的参数 都是 <strong>按值传递</strong> 的，被传递的值（基本类型值 / 引用类型值在内存中的地址） 会被复制给一个 局部变量（即命名参数 / arguments对象中的一个元素）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    obj.name = <span class="string">"Nicholas"</span>;</span><br><span class="line">    obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    obj.name = <span class="string">"Greg"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">setName(person);</span><br><span class="line">alert(person.name); <span class="comment">//"Nicholas"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果person 是按引用传递的，那么person 就会自动被修改为指向其name 属性值为"Greg"的新对象。</span></span><br><span class="line"><span class="comment">// 但是，当接下来再访问person.name 时，显示的值仍然是"Nicholas"。</span></span><br><span class="line"><span class="comment">// 这说明即使在函数内部修改了参数的值，但原始的引用仍然保持未变。</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><strong>检测类型</strong></p>
+<ul>
+<li><strong>typeof</strong> 操作符 —— 确定一个变量是 字符串、数值、布尔值，还是undefined  的最佳工具；</li>
+<li><strong>instanceof</strong> 操作符 —— 检测是什么类型的对象；</li>
+</ul>
+<p><br><br><br><br><br></p>
+<h1 id="执行环境及作用域"><a href="#执行环境及作用域" class="headerlink" title="执行环境及作用域"></a>执行环境及作用域</h1><p><strong>执行环境</strong> 定义了 变量或函数有权访问的其他数据，决定了它们各自的行为。每个执行环境都有一个与之关联的变量对象（variable object），环境中定义的所有变量和函数都保存在这个对象中。</p>
+<ul>
+<li><strong>全局执行环境</strong> —— 最外围的一个执行环境。<br>在Web浏览器中，全局执行环境被认为是window 对象，因此所有全局变量和函数都是作为window 对象的属性和方法创建的。某个执行环境中的所有代码执行完毕后，该环境被销毁，保存在其中的所有变量和函数定义也随之销毁。</li>
+<li><strong>函数执行环境</strong> —— 当执行流进入一个函数时，函数的环境就会被推入一个环境栈中。<br>而在函数执行之后，栈将其环境弹出，把控制权返回给之前的执行环境。</li>
+</ul>
+<p><br></p>
+<p><strong>作用域链</strong>（scope chain）保证对执行环境有权访问的所有变量和函数的有序访问。</p>
+<ul>
+<li>作用域链的前端，始终都是 <strong>当前执行的代码所在环境的变量对象</strong> 。</li>
+<li><strong>全局执行环境的变量对象</strong> 始终都是作用域链中的最后一个对象。</li>
+</ul>
+<p><strong>标识符解析</strong> 沿着作用域链一级一级地搜索标识符的过程。</p>
+<ul>
+<li>搜索过程始终从作用域链的前端开始，然后逐级地向后回溯，直至找到标识符为止。</li>
+<li>内部环境可以通过作用域链访问所有的外部环境，但外部环境不能访问内部环境中的任何变量和函数。</li>
+<li>这些环境之间的联系是 <strong>线性、有次序</strong> 的。</li>
+</ul>
+<p><strong>延长作用域链</strong>：<br>&emsp;&emsp;有些语句可以在作用域链的前端临时增加一个变量对象，该变量对象会在代码执行后被移除。当执行流进入下列任何一个语句时，作用域链就会得到加长：</p>
+<ul>
+<li>try-catch 语句的catch 块；</li>
+<li>with 语句。<br>这两个语句都会在作用域链的前端添加一个变量对象。对with 语句来说，会将指定的对象添加到作用域链中。<br>对catch 语句来说，会创建一个新的变量对象，其中包含的是被抛出的错误对象的声明。</li>
+</ul>
+<p><strong>没有块级作用域</strong>：<br>变量声明 —— 使用 var 声明的变量会自动被添加到最接近的环境中；如果初始化变量时没有使用var 声明，该变量会自动被添加到全局环境（严格模式下会报错）。<br>查询标识符 —— 如果局部环境中存在着同名标识符，就不会使用位于父环境中的标识符。</p>
+<p><br><br><br><br><br></p>
+<h1 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h1><p>JavaScript 具有<strong>自动垃圾收集机制</strong>，执行环境会负责管理代码执行过程中使用的内存。所需内存的分配以及无用内存的回收完全实现了自动管理。垃圾收集器会按照固定的时间间隔（或代码执行中预定的收集时间），<strong>周期性</strong> 地找出那些不再继续使用的变量，然后释放其占用的内存。</p>
+<p><strong>垃圾收集方式</strong> ：</p>
+<ul>
+<li><strong>标记清除</strong> （mark-and-sweep）—— 当变量进入环境（例如，在函数中声明一个变量）时，就将这个变量标记为“进入环境”。从逻辑上讲，永远不能释放进入环境的变量所占用的内存，因为只要执行流进入相应的环境，就可能会用到它们。而当变量离开环境时，则将其标记为“离开环境”。垃圾收集器在运行的时候会给存储在内存中的所有变量都加上标记（当然，可以使用任何标记方式）。然后，它会去掉环境中的变量以及被环境中的变量引用的变量的标记。而在此之后再被加上标记的变量将被视为准备删除的变量，原因是环境中的变量已经无法访问到这些变量了。最后，垃圾收集器完成内存清除工作，销毁那些带标记的值并回收它们所占用的内存空间。</li>
+<li><strong>引用计数</strong> （reference counting）—— 跟踪记录每个值被引用的次数。当垃圾收集器运行时，它就会释放那些引用次数为零的值所占用的内存。值得注意的问题是：<strong>循环引用</strong> ，指的是对象A 中包含一个指向对象B 的指针，而对象B 中也包含一个指向对象A 的引用。</li>
+</ul>
+<p><br></p>
+<p><strong>性能问题 &amp; 管理内存</strong> ：<br>&emsp;&emsp;随着IE7 的发布，JavaScript 引擎的垃圾收集例程改变了工作方式：触发垃圾收集的变量分配、字面量和（或）数组元素的临界值被调整为动态修正。<br>&emsp;&emsp;而优化内存占用的最佳方式，就是为执行中的代码只保存必要的数据。一旦数据不再有用，最好通过将其值设置为null 来释放其引用——这个做法叫做 <strong>解除引用</strong> （dereferencing）。这一做法适用于大多数全局变量和全局对象的属性。局部变量会在它们离开执行环境时自动被解除引用。<br>解除引用的真正作用是 <strong>让值脱离执行环境</strong> ，以便垃圾收集器下次运行时将其回收。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/jiafengfu">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
