@@ -57,32 +57,32 @@
             <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
-                    <span>HOME</span>
+                    <span>主页</span>
                 </a>
             </li>
             <li >
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
-                    <span>TAGS</span>
+                    <span>标签</span>
                 </a>
             </li>
             <li >
                 <a href="/archives">
                     <i class="iconfont icon-guidang2"></i>
-                    <span>ARCHIVES</span>
+                    <span>存档</span>
                 </a>
             </li>
             <li >
                 <a href="/about/">
                     <i class="iconfont icon-guanyu2"></i>
-                    <span>ABOUT</span>
+                    <span>关于</span>
                 </a>
             </li>
             
             <li>
                 <a id="search">
                     <i class="iconfont icon-sousuo1"></i>
-                    <span>SEARCH</span>
+                    <span>搜索</span>
                 </a>
             </li>
             
@@ -101,7 +101,7 @@
         <div class="search-input">
             <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
             <input id="search-input"/>
-            <span id="begin-search">search</span>
+            <span id="begin-search">搜索</span>
         </div>
         <div class="search-result-container" id="search-result-container">
 
@@ -124,16 +124,16 @@
     </div>
 
     <div class="post-meta">
-        <span class="attr">Post：<span>2020-01-09 13:48:21</span></span>
+        <span class="attr">发布于：<span>2020-01-09 13:48:21</span></span>
         
-        <span class="attr">Tags：/
+        <span class="attr">标签：/
         
         <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
         <span>/</span>
         
         
         </span>
-        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
 </span>
 </span>
     </div>
@@ -174,26 +174,19 @@
 <h3 id="Win10系统-Docker-安装"><a href="#Win10系统-Docker-安装" class="headerlink" title="Win10系统 Docker 安装"></a>Win10系统 Docker 安装</h3><h4 id="开启-Hyper-v"><a href="#开启-Hyper-v" class="headerlink" title="开启 Hyper-v"></a>开启 Hyper-v</h4><p>Windows【开始菜单】 -&gt; 右键菜单，选择【应用和功能】-&gt; 相关设置，点击【程序和功能】-&gt; 左侧菜单，点击【启用或关闭 Windows 功能】-&gt; 选中 Hyper-v，点击【确定】</p>
 <p><br></p>
 <h4 id="安装-Toolbox"><a href="#安装-Toolbox" class="headerlink" title="安装 Toolbox"></a>安装 Toolbox</h4><p>最新版 Toolbox 下载地址： <a href="https://www.docker.com/get-docker" target="_blank" rel="noopener">Docker 官方下载</a></p>
-<p>点击【Download Desktop and Take a Tutorial】，下载Windows相应版本。</p>
-<img src="/2020/01/09/Docker-入门/docker_download.png" title="docker_download">
+<p>点击【Download Desktop and Take a Tutorial】，下载Windows相应版本。<br><img src="/2020/01/09/Docker-入门/docker_download.png" title="docker_download"></p>
 <p><br></p>
-<h4 id="运行安装文件"><a href="#运行安装文件" class="headerlink" title="运行安装文件"></a>运行安装文件</h4><p>安装时，勾选 <u>使用 Windows容器</u>：</p>
-<img src="/2020/01/09/Docker-入门/docker_install.png" title="docker_install">
-<p>安装完成后，查看版本信息：</p>
-<img src="/2020/01/09/Docker-入门/docker_version.png" title="docker_version">
+<h4 id="运行安装文件"><a href="#运行安装文件" class="headerlink" title="运行安装文件"></a>运行安装文件</h4><p>安装时，勾选 <u>使用 Windows容器</u>：<br><img src="/2020/01/09/Docker-入门/docker_install.png" title="docker_install"></p>
+<p>安装完成后，查看版本信息：<br><img src="/2020/01/09/Docker-入门/docker_version.png" title="docker_version"></p>
 <p><br></p>
-<h4 id="镜像加速"><a href="#镜像加速" class="headerlink" title="镜像加速"></a>镜像加速</h4><p>在 【Settings -&gt; Daemon -&gt; Registry mirrors】中填写 镜像加速地址：</p>
-<img src="/2020/01/09/Docker-入门/docker_speed.png" title="docker_speed">
+<h4 id="镜像加速"><a href="#镜像加速" class="headerlink" title="镜像加速"></a>镜像加速</h4><p>在 【Settings -&gt; Daemon -&gt; Registry mirrors】中填写 镜像加速地址：<br><img src="/2020/01/09/Docker-入门/docker_speed.png" title="docker_speed"></p>
 <p>参考可用的地址：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//dockerhub.azk8s.cn        #Azure 中国镜像 </span></span><br><span class="line">https:<span class="comment">//reg-mirror.qiniu.com      #七牛云加速器 </span></span><br><span class="line">https:<span class="comment">//registry.docker-cn.com　　 #Docker中国区</span></span><br><span class="line">http:<span class="comment">//hub-mirror.c.163.com　　　　 #网易</span></span><br><span class="line">https:<span class="comment">//docker.mirrors.ustc.edu.cn       #USTC</span></span><br></pre></td></tr></table></figure>
 <p><br></p>
-<h4 id="修改镜像文件存储地址"><a href="#修改镜像文件存储地址" class="headerlink" title="修改镜像文件存储地址"></a>修改镜像文件存储地址</h4><p>执行 <code>docker info</code> 查看Docker 系统信息：</p>
-<img src="/2020/01/09/Docker-入门/docker_info.png" title="docker_info">
+<h4 id="修改镜像文件存储地址"><a href="#修改镜像文件存储地址" class="headerlink" title="修改镜像文件存储地址"></a>修改镜像文件存储地址</h4><p>执行 <code>docker info</code> 查看Docker 系统信息：<br><img src="/2020/01/09/Docker-入门/docker_info.png" title="docker_info"></p>
 <p>Windows 系统默认的镜像地址是 <code>C:\ProgramData\Docker</code> ，由于Docker 使用过程中可能会拉取很多镜像文件，建议将Docker 的镜像文件存储地址修改到其他盘。</p>
-<h5 id="通过Docker-GUI-界面修改"><a href="#通过Docker-GUI-界面修改" class="headerlink" title="通过Docker GUI 界面修改"></a>通过Docker GUI 界面修改</h5><p>在 【Settings -&gt; Daemon】中勾选【Advanced】选项，添加 <strong>graph属性</strong> 配置自定义路径：</p>
-<img src="/2020/01/09/Docker-入门/docker_graph.png" title="docker_graph">
-<p>配置后点击【Apply】Docker 将自动重启，再查看 <code>Root Dir</code> 显示如下：</p>
-<img src="/2020/01/09/Docker-入门/docker_info_changed.png" title="docker_info_changed">
+<h5 id="通过Docker-GUI-界面修改"><a href="#通过Docker-GUI-界面修改" class="headerlink" title="通过Docker GUI 界面修改"></a>通过Docker GUI 界面修改</h5><p>在 【Settings -&gt; Daemon】中勾选【Advanced】选项，添加 <strong>graph属性</strong> 配置自定义路径：<br><img src="/2020/01/09/Docker-入门/docker_graph.png" title="docker_graph"></p>
+<p>配置后点击【Apply】Docker 将自动重启，再查看 <code>Root Dir</code> 显示如下：<br><img src="/2020/01/09/Docker-入门/docker_info_changed.png" title="docker_info_changed"></p>
 <h5 id="使用-命令行-修改"><a href="#使用-命令行-修改" class="headerlink" title="使用 命令行 修改"></a>使用 命令行 修改</h5><p>停止运行 Docker：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> systemctl stop docker</span></span><br></pre></td></tr></table></figure></p>
 <p>修改 daemon.json 文件，添加 graph属性配置：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> vi /etc/docker/daemon.json</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
