@@ -175,25 +175,25 @@
 <p><br></p>
 <h4 id="安装-Toolbox"><a href="#安装-Toolbox" class="headerlink" title="安装 Toolbox"></a>安装 Toolbox</h4><p>最新版 Toolbox 下载地址： <a href="https://www.docker.com/get-docker" target="_blank" rel="noopener">Docker 官方下载</a></p>
 <p>点击【Download Desktop and Take a Tutorial】，下载Windows相应版本。</p>
-
+<img src="/2020/01/09/Docker-入门/docker_download.png" title="docker download">
 <p><br></p>
 <h4 id="运行安装文件"><a href="#运行安装文件" class="headerlink" title="运行安装文件"></a>运行安装文件</h4><p>安装时，勾选 <u>使用 Windows容器</u>：</p>
-
+<img src="/2020/01/09/Docker-入门/docker_install.png" title="docker install">
 <p>安装完成后，查看版本信息：</p>
-
+<img src="/2020/01/09/Docker-入门/docker_version.png" title="docker version">
 <p><br></p>
 <h4 id="镜像加速"><a href="#镜像加速" class="headerlink" title="镜像加速"></a>镜像加速</h4><p>在 【Settings -&gt; Daemon -&gt; Registry mirrors】中填写 镜像加速地址：</p>
-
+<img src="/2020/01/09/Docker-入门/docker_speed.png" title="docker speed">
 <p>参考可用的地址：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//dockerhub.azk8s.cn        #Azure 中国镜像 </span></span><br><span class="line">https:<span class="comment">//reg-mirror.qiniu.com      #七牛云加速器 </span></span><br><span class="line">https:<span class="comment">//registry.docker-cn.com　　 #Docker中国区</span></span><br><span class="line">http:<span class="comment">//hub-mirror.c.163.com　　　　 #网易</span></span><br><span class="line">https:<span class="comment">//docker.mirrors.ustc.edu.cn       #USTC</span></span><br></pre></td></tr></table></figure>
 <p><br></p>
 <h4 id="修改镜像文件存储地址"><a href="#修改镜像文件存储地址" class="headerlink" title="修改镜像文件存储地址"></a>修改镜像文件存储地址</h4><p>执行 <code>docker info</code> 查看Docker 系统信息：</p>
-
+<img src="/2020/01/09/Docker-入门/docker_info.png" title="docker info">
 <p>Windows 系统默认的镜像地址是 <code>C:\ProgramData\Docker</code> ，由于Docker 使用过程中可能会拉取很多镜像文件，建议将Docker 的镜像文件存储地址修改到其他盘。</p>
 <h5 id="通过Docker-GUI-界面修改"><a href="#通过Docker-GUI-界面修改" class="headerlink" title="通过Docker GUI 界面修改"></a>通过Docker GUI 界面修改</h5><p>在 【Settings -&gt; Daemon】中勾选【Advanced】选项，添加 <strong>graph属性</strong> 配置自定义路径：</p>
-
+<img src="/2020/01/09/Docker-入门/docker_graph.png" title="docker graph">
 <p>配置后点击【Apply】Docker 将自动重启，再查看 <code>Root Dir</code> 显示如下：</p>
-
+<img src="/2020/01/09/Docker-入门/docker_info_changed.png" title="docker info changed">
 <h5 id="使用-命令行-修改"><a href="#使用-命令行-修改" class="headerlink" title="使用 命令行 修改"></a>使用 命令行 修改</h5><p>停止运行 Docker：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> systemctl stop docker</span></span><br></pre></td></tr></table></figure></p>
 <p>修改 daemon.json 文件，添加 graph属性配置：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> vi /etc/docker/daemon.json</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
