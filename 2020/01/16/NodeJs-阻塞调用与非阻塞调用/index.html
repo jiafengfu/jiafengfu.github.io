@@ -11,7 +11,7 @@
 
     <title>
         
-        侧耳倾听 Vol.1 - FU的博客 | FU&#39;s Blog
+        NodeJs 阻塞调用与非阻塞调用 - FU的博客 | FU&#39;s Blog
         
     </title>
 
@@ -90,7 +90,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#阻塞"><span class="toc-text">阻塞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码对比"><span class="toc-text">代码对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#并发-amp-吞吐量"><span class="toc-text">并发 & 吞吐量</span></a></li></ol>
 </div>
     
 </div>
@@ -120,18 +120,15 @@
 
 <div class="post-container">
     <div class="post-title">
-        侧耳倾听 Vol.1
+        NodeJs 阻塞调用与非阻塞调用
     </div>
 
     <div class="post-meta">
-        <span class="attr">发布于：<span>2019-08-01 22:45:46</span></span>
+        <span class="attr">发布于：<span>2020-01-16 14:40:48</span></span>
         
         <span class="attr">标签：/
         
-        <a class="tag" href="/tags/#生活" title="生活">生活</a>
-        <span>/</span>
-        
-        <a class="tag" href="/tags/#侧耳倾听" title="侧耳倾听">侧耳倾听</a>
+        <a class="tag" href="/tags/#NodeJs" title="NodeJs">NodeJs</a>
         <span>/</span>
         
         
@@ -141,14 +138,25 @@
 </span>
     </div>
     <div class="post-content ">
-        <p><em>#抄句子#</em></p>
+        <h3 id="阻塞"><a href="#阻塞" class="headerlink" title="阻塞"></a>阻塞</h3><p>阻塞：在Node.js 程序中，其他 JavaScript语句的执行，必须等待一个 非JavaScript 操作（如 I/O）的完成。</p>
 <blockquote>
-<p>「那日撞見你，草色風衣，自後私宅擺設便換了綠。」  &emsp;—— 木心</p>
+<p>当阻塞发生时，事件循环 无法继续运行 JavaScript。</p>
 </blockquote>
-<p><br></p>
+<p>在 Node.js 标准库中的所有 I/O 方法都提供 异步版本（非阻塞），并接受回调函数；某些方法提供对应的 阻塞版本，名称以 <code>Sync</code> 结尾。</p>
+<p><br><br><br><br><br></p>
+<h3 id="代码对比"><a href="#代码对比" class="headerlink" title="代码对比"></a>代码对比</h3><p><strong>阻塞</strong>方法 - <strong>同步</strong>执行；<br><strong>非阻塞</strong>方法 - <strong>异步</strong>执行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 同步 文件读取（阻塞 其它js 语句的执行，直到整个文件读取完毕）</span></span><br><span class="line"><span class="keyword">const</span> data = fs.readFileSync(<span class="string">'/file.md'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 异步 文件读取（提高吞吐量）</span></span><br><span class="line">fs.readFile(<span class="string">'/file.md'</span>, (err, data) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><br><br><br><br><br></p>
+<h3 id="并发-amp-吞吐量"><a href="#并发-amp-吞吐量" class="headerlink" title="并发 &amp; 吞吐量"></a>并发 &amp; 吞吐量</h3><p>在 Node.js 中 JavaScript 的执行是 <strong>单线程</strong> 的，因此，<strong>并发性</strong> 是指 <u>事件循环在完成其他工作后 执行 JavaScript回调函数的能力</u>。</p>
 <blockquote>
-<p>「何為思念？」<br> &emsp;&emsp;「日月，星辰，曠野雨落。」<br> &emsp;&emsp;「可否具體？」<br> &emsp;&emsp;「山川，江流，煙裊湖泊。」<br> &emsp;&emsp;「可否再具體？」<br> &emsp;&emsp;「萬物是你，無可躲。」</p>
+<p>混合 阻塞和非阻塞代码，可能导致执行顺序错误。</p>
 </blockquote>
+<hr>
+<p>参考链接： </p>
+<ul>
+<li>nodejs核心库（跨平台事件库）  <a href="https://libuv.org/" target="_blank" rel="noopener">libuv</a></li>
+</ul>
+<p><br><br><br><br><br></p>
 
         
         <br />

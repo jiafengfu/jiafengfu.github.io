@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fujiafeng.com/"/>
-  <updated>2020-01-14T16:07:33.169Z</updated>
+  <updated>2020-01-16T06:48:21.158Z</updated>
   <id>http://fujiafeng.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NodeJs 阻塞调用与非阻塞调用</title>
+    <link href="http://fujiafeng.com/2020/01/16/NodeJs-%E9%98%BB%E5%A1%9E%E8%B0%83%E7%94%A8%E4%B8%8E%E9%9D%9E%E9%98%BB%E5%A1%9E%E8%B0%83%E7%94%A8/"/>
+    <id>http://fujiafeng.com/2020/01/16/NodeJs-%E9%98%BB%E5%A1%9E%E8%B0%83%E7%94%A8%E4%B8%8E%E9%9D%9E%E9%98%BB%E5%A1%9E%E8%B0%83%E7%94%A8/</id>
+    <published>2020-01-16T06:40:48.000Z</published>
+    <updated>2020-01-16T06:48:21.158Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="阻塞"><a href="#阻塞" class="headerlink" title="阻塞"></a>阻塞</h3><p>阻塞：在Node.js 程序中，其他 JavaScript语句的执行，必须等待一个 非JavaScript 操作（如 I/O）的完成。</p><blockquote><p>当阻塞发生时，事件循环 无法继续运行 JavaScript。</p></blockquote><p>在 Node.js 标准库中的所有 I/O 方法都提供 异步版本（非阻塞），并接受回调函数；某些方法提供对应的 阻塞版本，名称以 <code>Sync</code> 结尾。</p><p><br><br><br><br><br></p><h3 id="代码对比"><a href="#代码对比" class="headerlink" title="代码对比"></a>代码对比</h3><p><strong>阻塞</strong>方法 - <strong>同步</strong>执行；<br><strong>非阻塞</strong>方法 - <strong>异步</strong>执行。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 同步 文件读取（阻塞 其它js 语句的执行，直到整个文件读取完毕）</span></span><br><span class="line"><span class="keyword">const</span> data = fs.readFileSync(<span class="string">'/file.md'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 异步 文件读取（提高吞吐量）</span></span><br><span class="line">fs.readFile(<span class="string">'/file.md'</span>, (err, data) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p><br><br><br><br><br></p><h3 id="并发-amp-吞吐量"><a href="#并发-amp-吞吐量" class="headerlink" title="并发 &amp; 吞吐量"></a>并发 &amp; 吞吐量</h3><p>在 Node.js 中 JavaScript 的执行是 <strong>单线程</strong> 的，因此，<strong>并发性</strong> 是指 <u>事件循环在完成其他工作后 执行 JavaScript回调函数的能力</u>。</p><blockquote><p>混合 阻塞和非阻塞代码，可能导致执行顺序错误。</p></blockquote><hr><p>参考链接： </p><ul><li>nodejs核心库（跨平台事件库）  <a href="https://libuv.org/" target="_blank" rel="noopener">libuv</a></li></ul><p><br><br><br><br><br></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;阻塞&quot;&gt;&lt;a href=&quot;#阻塞&quot; class=&quot;headerlink&quot; title=&quot;阻塞&quot;&gt;&lt;/a&gt;阻塞&lt;/h3&gt;&lt;p&gt;阻塞：在Node.js 程序中，其他 JavaScript语句的执行，必须等待一个 非JavaScript 操作（如 I/O）的完成。&lt;/p
+      
+    
+    </summary>
+    
+    
+    
+      <category term="NodeJs" scheme="http://fujiafeng.com/tags/NodeJs/"/>
+    
+  </entry>
   
   <entry>
     <title>《我们之间的距离》</title>
@@ -520,30 +544,6 @@
       
       
         &lt;h1 id=&quot;关于-ESLint&quot;&gt;&lt;a href=&quot;#关于-ESLint&quot; class=&quot;headerlink&quot; title=&quot;关于 ESLint&quot;&gt;&lt;/a&gt;关于 ESLint&lt;/h1&gt;&lt;p&gt;ESLint 是一个插件化的 javascript 代码检测工具，借助 ESLint
-      
-    
-    </summary>
-    
-    
-    
-      <category term="工具" scheme="http://fujiafeng.com/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vscode 快捷键（windows）</title>
-    <link href="http://fujiafeng.com/2019/09/23/vscode-%E5%BF%AB%E6%8D%B7%E9%94%AE%EF%BC%88windows%EF%BC%89/"/>
-    <id>http://fujiafeng.com/2019/09/23/vscode-%E5%BF%AB%E6%8D%B7%E9%94%AE%EF%BC%88windows%EF%BC%89/</id>
-    <published>2019-09-23T14:38:19.000Z</published>
-    <updated>2019-09-23T14:53:56.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>【Ctrl + Shift + P】</strong>    打开命令面板<br>&emsp;&emsp;<strong>【Ctrl + U】</strong>   返回上一个光标位置<br>&emsp;&emsp;<strong>【Home/End】</strong>    光标移动至行首或行尾<br>&emsp;&emsp;<strong>【Ctrl + Home/End】</strong>    光标移动至文档的开头或末尾<br>&emsp;&emsp;<strong>【Ctrl + D】</strong>    选中单词（第二次按下，会找到文档中下一次出现该单词的位置 并选中单词）<br>&emsp;&emsp;<strong>【Alt + 上下】</strong>    代码移动<br>&emsp;&emsp;<strong>【Ctrl + /】</strong>    行注释<br>&emsp;&emsp;<strong>【Alt + Shift + F】</strong>    格式化整个文档<br>&emsp;&emsp;<strong>【Alt + 鼠标点击】</strong>    多光标<br>&emsp;&emsp;<strong>【Alt + Shift + I】</strong>    在选中的多行代码的 每一行 （已选中内容）后边都会添加光标<br>&emsp;&emsp;<strong>【Ctrl + P】</strong>    快速打开文件<br>&emsp;&emsp;<strong>【Ctrl + G】</strong>    快速跳转（代码行）<br>&emsp;&emsp;<strong>【Ctrl + Shift + O】</strong>    符号跳转（符号：文件名、函数名、css类名）<br>&emsp;&emsp;<strong>【F12】</strong>    跳转至 函数定义处<br>&emsp;&emsp;<strong>【Ctrl + F12】</strong>    跳转至 函数实现处<br>&emsp;&emsp;<strong>【Shift + F12】</strong>    引用跳转（先将光标移动到 函数/类 上）</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;【Ctrl + Shift + P】&lt;/strong&gt;    打开命令面板&lt;br&gt;&amp;emsp;&amp;emsp;&lt;strong&gt;【Ctrl + U】&lt;/strong&gt;   返回上一个光标位置&lt;br&gt;&amp;emsp;&amp;emsp;&lt;strong&gt;【Home/End】&lt;/s
       
     
     </summary>
