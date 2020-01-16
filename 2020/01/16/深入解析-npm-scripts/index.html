@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="符佳凤的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        深入解析 npm scripts - FU的博客 | FU&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<link rel="alternate" href="/atom.xml" title="FU's Blog" type="application/atom+xml">
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Fashion passes ,   style remains. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Jiafeng Fu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#package-json-中的-scripts"><span class="toc-text">package.json 中的 scripts</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#控制符-amp-amp-与-amp"><span class="toc-text">控制符 && 与 &</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack-dev-server"><span class="toc-text">webpack-dev-server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scripts-命令的hook"><span class="toc-text">scripts 命令的hook</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#npm命令简写"><span class="toc-text">npm命令简写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ElementUI-源码中的scripts"><span class="toc-text">ElementUI 源码中的scripts</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> Fashion passes ,   style remains. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        深入解析 npm scripts
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-01-16 17:06:53</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#npm" title="npm">npm</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#前端工程化" title="前端工程化">前端工程化</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <blockquote>
+<p>将 打包、部署 等命令都封装到 npm scripts 中，通过运行 <code>npm run xxx</code> 命令可以 <strong>执行多个自定义任务</strong>：增加 scripts 中的键值对，然后用一个 <strong>总任务脚本</strong> 将相关键值对用 <code>&amp;&amp;</code> 连接起来。</p>
+</blockquote>
+<p><br><br><br><br><br></p>
+<h3 id="package-json-中的-scripts"><a href="#package-json-中的-scripts" class="headerlink" title="package.json 中的 scripts"></a>package.json 中的 scripts</h3><blockquote>
+<p>package.json 中的scripts 执行的脚本是 本地项目的 <code>/node_modules/.bin</code> 目录下的脚本。</p>
+<p> <code>npm run</code> 会 <strong>创建一个Shell</strong>，执行指定的命令，并临时将 <code>/node_modules/.bin</code> 加入 <strong><code>PATH</code></strong> 变量，这意味着 本地模块可以直接运行。</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    ... </span><br><span class="line">    "scripts": &#123;</span><br><span class="line">        "serve": "vue-cli-service serve",</span><br><span class="line">        "build": "vue-cli-service build",</span><br><span class="line">        "lint": "vue-cli-service lint"</span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>前端项目中的 package.json 文件中，<u>scripts 脚本说明</u>：</p>
+<ul>
+<li>执行 <strong><code>npm run &lt;scripts的key&gt;</code></strong> 相当于执行 <code>&lt;scripts的key对应的value&gt;</code></li>
+<li><code>build</code>，<code>build:prod</code>，<code>build:sit</code> 分别为 本地环境、生产环境、测试环境 打包</li>
+<li><code>build:doc</code>  自动生成文档</li>
+</ul>
+<p><u>常用配置信息</u>：</p>
+<ul>
+<li>【 <strong><code>cross-env</code></strong> 】跨平台设置及使用环境变量（<code>npm i --save-dev cross-env</code>）</li>
+<li>【 <strong><code>NODE_ENV</code></strong> 】/config 下对应环境配置的 NODE_ENV 值</li>
+<li>【 <strong><code>env_config</code></strong> 】/config 下对应环境配置的 env_config 值</li>
+<li>【 <strong><code>node build/build.js</code></strong> 】环境入口文件</li>
+<li>【 <strong><code>npm-run-all</code></strong> 】并行（<code>--parallel</code>）/按序（<code>--sequential</code>）执行多个脚本</li>
+</ul>
+<p><br><br><br><br><br></p>
+<h3 id="控制符-amp-amp-与-amp"><a href="#控制符-amp-amp-与-amp" class="headerlink" title="控制符 &amp;&amp; 与 &amp;"></a>控制符 &amp;&amp; 与 &amp;</h3><ul>
+<li><code>npm-run-all --parallel</code> 相当于  <code>&amp;</code>  ，并行执行</li>
+<li><code>npm-run-all --sequential</code> 相当于  <code>&amp;&amp;</code> ，串行执行</li>
+</ul>
+<img src="/2020/01/16/深入解析-npm-scripts/Image1.png" title="StackOverflow相关讨论">
+<img src="/2020/01/16/深入解析-npm-scripts/Image2.png" title="StackOverflow相关讨论">
+<p><br><br><br><br><br></p>
+<h3 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h3><ul>
+<li>只能用在 <strong>开发环境</strong>（ <code>NODE_ENV=development</code> ）</li>
+<li>用于构建 <strong>本地服务器</strong></li>
+</ul>
+<p>详情请见：深入解析 webpack-dev-server</p>
+<p><br><br><br><br><br></p>
+<h3 id="scripts-命令的hook"><a href="#scripts-命令的hook" class="headerlink" title="scripts 命令的hook"></a>scripts 命令的hook</h3><p>每个命令都有对应的 pre<scriptname>脚本 和 post<scriptname>脚本，显示定义时，会执行对应的 pre/post命令：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">scripts: &#123;</span><br><span class="line">  "prebuild" : "echo \" this is pre build \"",</span><br><span class="line">  "build" : "echo \" this is build \"",</span><br><span class="line">  "postbuild" : "echo \" this is post build \""</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></scriptname></scriptname></p>
+<p>执行 <code>npm run build</code> 会依次执行 prebuild、build、postbuild 三个命令。</p>
+<p>npm默认提供如下钩子：</p>
+<ul>
+<li>prepublish, postpublish</li>
+<li>preinstall, postinstall</li>
+<li>preuninstall, postuninstall</li>
+<li>preversion, postversion</li>
+<li>pretest, posttest</li>
+<li>prestop, poststop</li>
+<li>prestart, poststart</li>
+<li>prerestart, postrestart</li>
+</ul>
+<p>自定义脚本命令 也可以添加钩子：<strong>pre</strong>myscript, myscript, <strong>post</strong>myscript 。</p>
+<p><br><br><br><br><br></p>
+<h3 id="npm命令简写"><a href="#npm命令简写" class="headerlink" title="npm命令简写"></a>npm命令简写</h3><ul>
+<li>npm start === npm run start</li>
+<li>npm stop === npm run stop</li>
+<li>npm test === npm run test</li>
+<li>npm restart === npm run restart</li>
+</ul>
+<p><br><br><br><br><br></p>
+<h3 id="ElementUI-源码中的scripts"><a href="#ElementUI-源码中的scripts" class="headerlink" title="ElementUI 源码中的scripts"></a>ElementUI 源码中的scripts</h3><p>详情请见： ElementUI 源码分析 - package.json配置</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/jiafengfu">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
