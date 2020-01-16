@@ -57,32 +57,32 @@
             <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
-                    <span>主页</span>
+                    <span>HOME</span>
                 </a>
             </li>
             <li >
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
-                    <span>标签</span>
+                    <span>TAGS</span>
                 </a>
             </li>
             <li >
                 <a href="/archives">
                     <i class="iconfont icon-guidang2"></i>
-                    <span>存档</span>
+                    <span>ARCHIVES</span>
                 </a>
             </li>
             <li >
                 <a href="/about/">
                     <i class="iconfont icon-guanyu2"></i>
-                    <span>关于</span>
+                    <span>ABOUT</span>
                 </a>
             </li>
             
             <li>
                 <a id="search">
                     <i class="iconfont icon-sousuo1"></i>
-                    <span>搜索</span>
+                    <span>SEARCH</span>
                 </a>
             </li>
             
@@ -101,7 +101,7 @@
         <div class="search-input">
             <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
             <input id="search-input"/>
-            <span id="begin-search">搜索</span>
+            <span id="begin-search">search</span>
         </div>
         <div class="search-result-container" id="search-result-container">
 
@@ -124,9 +124,9 @@
     </div>
 
     <div class="post-meta">
-        <span class="attr">发布于：<span>2020-01-16 17:22:30</span></span>
+        <span class="attr">Post：<span>2020-01-16 17:22:30</span></span>
         
-        <span class="attr">标签：/
+        <span class="attr">Tags：/
         
         <a class="tag" href="/tags/#源码系列" title="源码系列">源码系列</a>
         <span>/</span>
@@ -139,7 +139,7 @@
         
         
         </span>
-        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
 </span>
 </span>
     </div>
@@ -168,8 +168,11 @@
 </blockquote>
 <p><br></p>
 <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --<span class="built_in">save</span>-<span class="built_in">dev</span> <span class="built_in">cross</span>-env</span><br></pre></td></tr></table></figure>
-<p>cross-env 设置NODE_ENV 使webpack的配置文件可以获取该值；<br>webpack配置文件中设置的NODE_ENV 是为了 在打包后的文件中获取该值。<br>因此：<br>在scripts 中设置时，既要配置 cross-env NODE_ENV=XXX，又要指定 webpack配置文件 webpack –config /build/webpack.conf.js ，并在webpack配置文件中定义 DefinePlugin() 或 在webpack4 中可使用 mode指定NODE_ENV:<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mode: process<span class="selector-class">.env</span><span class="selector-class">.NODE_ENV</span>,</span><br></pre></td></tr></table></figure></p>
-<p>当我们设置 mode 为 development 或者 production时，webpack<br>会自动的进行一些设置（当然设置了模式以后，webpack会自动的为项目添加一些插件）</p>
+<p>cross-env 设置NODE_ENV 使webpack的配置文件可以获取该值；</p>
+<p>webpack配置文件中设置的NODE_ENV 是为了 在打包后的文件中获取该值。</p>
+<p>因此：</p>
+<p>在scripts 中设置时，既要配置 cross-env NODE_ENV=XXX，又要指定 webpack配置文件 webpack –config /build/webpack.conf.js ，并在webpack配置文件中定义 DefinePlugin() 或 在webpack4 中可使用 mode指定NODE_ENV:<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mode: process<span class="selector-class">.env</span><span class="selector-class">.NODE_ENV</span>,</span><br></pre></td></tr></table></figure></p>
+<p>当我们设置 mode 为 development 或者 production时，webpack 会自动的进行一些设置（当然设置了模式以后，webpack会自动的为项目添加一些插件）</p>
 <blockquote>
 <p>mode: development –&gt; process.env.NODE_ENV = development<br>mode: production –&gt; process.env.NODE_ENV = production<br>默认情况下 –&gt; process.env.NODE_ENV = production</p>
 </blockquote>
