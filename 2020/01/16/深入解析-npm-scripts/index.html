@@ -57,32 +57,32 @@
             <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
-                    <span>HOME</span>
+                    <span>主页</span>
                 </a>
             </li>
             <li >
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
-                    <span>TAGS</span>
+                    <span>标签</span>
                 </a>
             </li>
             <li >
                 <a href="/archives">
                     <i class="iconfont icon-guidang2"></i>
-                    <span>ARCHIVES</span>
+                    <span>存档</span>
                 </a>
             </li>
             <li >
                 <a href="/about/">
                     <i class="iconfont icon-guanyu2"></i>
-                    <span>ABOUT</span>
+                    <span>关于</span>
                 </a>
             </li>
             
             <li>
                 <a id="search">
                     <i class="iconfont icon-sousuo1"></i>
-                    <span>SEARCH</span>
+                    <span>搜索</span>
                 </a>
             </li>
             
@@ -101,7 +101,7 @@
         <div class="search-input">
             <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
             <input id="search-input"/>
-            <span id="begin-search">search</span>
+            <span id="begin-search">搜索</span>
         </div>
         <div class="search-result-container" id="search-result-container">
 
@@ -124,9 +124,12 @@
     </div>
 
     <div class="post-meta">
-        <span class="attr">Post：<span>2020-01-16 17:06:53</span></span>
+        <span class="attr">发布于：<span>2020-01-16 17:06:53</span></span>
         
-        <span class="attr">Tags：/
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#NodeJs" title="NodeJs">NodeJs</a>
+        <span>/</span>
         
         <a class="tag" href="/tags/#npm" title="npm">npm</a>
         <span>/</span>
@@ -136,7 +139,7 @@
         
         
         </span>
-        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
 </span>
 </span>
     </div>
@@ -144,7 +147,7 @@
         <blockquote>
 <p>将 打包、部署 等命令都封装到 npm scripts 中，通过运行 <code>npm run xxx</code> 命令可以 <strong>执行多个自定义任务</strong>：增加 scripts 中的键值对，然后用一个 <strong>总任务脚本</strong> 将相关键值对用 <code>&amp;&amp;</code> 连接起来。</p>
 </blockquote>
-<p><br><br><br><br><br></p>
+<p><br><br><br></p>
 <h3 id="package-json-中的-scripts"><a href="#package-json-中的-scripts" class="headerlink" title="package.json 中的 scripts"></a>package.json 中的 scripts</h3><blockquote>
 <p>package.json 中的scripts 执行的脚本是 本地项目的 <code>/node_modules/.bin</code> 目录下的脚本。</p>
 <p> <code>npm run</code> 会 <strong>创建一个Shell</strong>，执行指定的命令，并临时将 <code>/node_modules/.bin</code> 加入 <strong><code>PATH</code></strong> 变量，这意味着 本地模块可以直接运行。</p>
@@ -164,20 +167,20 @@
 <li>【 <strong><code>node build/build.js</code></strong> 】环境入口文件</li>
 <li>【 <strong><code>npm-run-all</code></strong> 】并行（<code>--parallel</code>）/按序（<code>--sequential</code>）执行多个脚本</li>
 </ul>
-<p><br><br><br><br><br></p>
+<p><br><br><br></p>
 <h3 id="控制符-amp-amp-与-amp"><a href="#控制符-amp-amp-与-amp" class="headerlink" title="控制符 &amp;&amp; 与 &amp;"></a>控制符 &amp;&amp; 与 &amp;</h3><ul>
 <li><code>npm-run-all --parallel</code> 相当于  <code>&amp;</code>  ，并行执行</li>
 <li><code>npm-run-all --sequential</code> 相当于  <code>&amp;&amp;</code> ，串行执行</li>
 </ul>
 <img src="/2020/01/16/深入解析-npm-scripts/Image1.png" title="StackOverflow相关讨论">
 <img src="/2020/01/16/深入解析-npm-scripts/Image2.png" title="StackOverflow相关讨论">
-<p><br><br><br><br><br></p>
+<p><br><br><br></p>
 <h3 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h3><ul>
 <li>只能用在 <strong>开发环境</strong>（ <code>NODE_ENV=development</code> ）</li>
 <li>用于构建 <strong>本地服务器</strong></li>
 </ul>
 <p>详情请见：深入解析 webpack-dev-server</p>
-<p><br><br><br><br><br></p>
+<p><br><br><br></p>
 <h3 id="scripts-命令的hook"><a href="#scripts-命令的hook" class="headerlink" title="scripts 命令的hook"></a>scripts 命令的hook</h3><p>每个命令都有对应的 pre<scriptname>脚本 和 post<scriptname>脚本，显示定义时，会执行对应的 pre/post命令：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">scripts: &#123;</span><br><span class="line">  "prebuild" : "echo \" this is pre build \"",</span><br><span class="line">  "build" : "echo \" this is build \"",</span><br><span class="line">  "postbuild" : "echo \" this is post build \""</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></scriptname></scriptname></p>
 <p>执行 <code>npm run build</code> 会依次执行 prebuild、build、postbuild 三个命令。</p>
 <p>npm默认提供如下钩子：</p>
@@ -192,15 +195,16 @@
 <li>prerestart, postrestart</li>
 </ul>
 <p>自定义脚本命令 也可以添加钩子：<strong>pre</strong>myscript, myscript, <strong>post</strong>myscript 。</p>
-<p><br><br><br><br><br></p>
+<p><br><br><br></p>
 <h3 id="npm命令简写"><a href="#npm命令简写" class="headerlink" title="npm命令简写"></a>npm命令简写</h3><ul>
 <li>npm start === npm run start</li>
 <li>npm stop === npm run stop</li>
 <li>npm test === npm run test</li>
 <li>npm restart === npm run restart</li>
 </ul>
-<p><br><br><br><br><br></p>
+<p><br><br><br></p>
 <h3 id="ElementUI-源码中的scripts"><a href="#ElementUI-源码中的scripts" class="headerlink" title="ElementUI 源码中的scripts"></a>ElementUI 源码中的scripts</h3><p>详情请见： ElementUI 源码分析 - package.json配置</p>
+<p><br><br><br><br><br></p>
 
         
         <br />

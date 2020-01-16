@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://fujiafeng.com/2020/01/16/%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90-process-env-NODE-ENV/</loc>
+    
+    <lastmod>2020-01-16T09:25:09.427Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://fujiafeng.com/2020/01/16/%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90-npm-scripts/</loc>
     
-    <lastmod>2020-01-16T09:13:23.669Z</lastmod>
+    <lastmod>2020-01-16T09:16:51.611Z</lastmod>
     
   </url>
   
