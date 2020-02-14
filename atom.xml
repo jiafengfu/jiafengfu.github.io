@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fujiafeng.com/"/>
-  <updated>2020-02-14T08:30:20.329Z</updated>
+  <updated>2020-02-14T08:43:16.733Z</updated>
   <id>http://fujiafeng.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://fujiafeng.com/2020/02/14/NodeJs-process-%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9D%97/"/>
     <id>http://fujiafeng.com/2020/02/14/NodeJs-process-%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9D%97/</id>
     <published>2020-02-14T08:25:10.000Z</published>
-    <updated>2020-02-14T08:30:20.329Z</updated>
+    <updated>2020-02-14T08:43:16.733Z</updated>
     
-    <content type="html"><![CDATA[<p><code>process</code> 对象：</p><ul><li>全局变量，提供 当前Node.js 进程相关的信息，并对其进行控制；</li><li>始终可供 Node.js 应用程序使用，无需 <code>require()</code> 。</li></ul>]]></content>
+    <content type="html"><![CDATA[<p><code>process</code> 对象：</p><ul><li>全局变量，提供 当前Node.js 进程相关的信息，并对其进行控制；</li><li>始终可供 Node.js 应用程序使用，无需 <code>require()</code> 。</li></ul><p><br><br><br></p><h2 id="进程事件"><a href="#进程事件" class="headerlink" title="进程事件"></a>进程事件</h2><p><code>process</code> 对象是 <code>EventEmitter</code> 的实例。</p>]]></content>
     
     <summary type="html">
     
