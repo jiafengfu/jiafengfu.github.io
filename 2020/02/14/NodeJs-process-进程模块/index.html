@@ -90,7 +90,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#进程事件"><span class="toc-text">进程事件</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#进程事件"><span class="toc-text">进程事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#beforeExit-事件"><span class="toc-text">beforeExit 事件</span></a></li></ol></li></ol>
 </div>
     
 </div>
@@ -145,6 +145,15 @@
 </ul>
 <p><br><br><br></p>
 <h2 id="进程事件"><a href="#进程事件" class="headerlink" title="进程事件"></a>进程事件</h2><p><code>process</code> 对象是 <code>EventEmitter</code> 的实例。</p>
+<p><br><br><br><br><br></p>
+<h3 id="beforeExit-事件"><a href="#beforeExit-事件" class="headerlink" title="beforeExit 事件"></a><code>beforeExit</code> 事件</h3><ul>
+<li>当 Node.js <strong>清空其事件循环</strong> 并且<strong>没有其他工作要安排</strong>时，会触发 <code>&#39;beforeExit&#39;</code> 事件。</li>
+<li>通常，Node.js 进程将在没有调度工作时退出，但在 <code>‘beforeExit’</code>事件上注册的监听器可以进行 <strong>异步调用</strong>，从而导致 Node.js 进程继续。</li>
+<li>调用监听器回调函数时，会将 <code>process.exitCode</code> 值作为 唯一参数 传入。</li>
+<li>导致 <strong>显式终止</strong> 的条件，<strong>不会触发</strong> <code>&#39;beforeExit&#39;</code> 事件（调用 <code>process.exit()</code> 或 未捕获的异常）。</li>
+</ul>
+<img src="/2020/02/14/NodeJs-process-进程模块/beforeExit1.png" title="beforeExit">
+<p>执行结果如下：<br><img src="/2020/02/14/NodeJs-process-进程模块/beforeExit2.png" title="beforeExit"></p>
 
         
         <br />
