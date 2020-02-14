@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fujiafeng.com/"/>
-  <updated>2020-02-14T08:52:29.929Z</updated>
+  <updated>2020-02-14T08:59:37.777Z</updated>
   <id>http://fujiafeng.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://fujiafeng.com/2020/02/14/NodeJs-process-%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9D%97/"/>
     <id>http://fujiafeng.com/2020/02/14/NodeJs-process-%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9D%97/</id>
     <published>2020-02-14T08:25:10.000Z</published>
-    <updated>2020-02-14T08:52:29.929Z</updated>
+    <updated>2020-02-14T08:59:37.777Z</updated>
     
-    <content type="html"><![CDATA[<p><code>process</code> 对象：</p><ul><li>全局变量，提供 当前Node.js 进程相关的信息，并对其进行控制；</li><li>始终可供 Node.js 应用程序使用，无需 <code>require()</code> 。</li></ul><p><br><br><br></p><h2 id="进程事件"><a href="#进程事件" class="headerlink" title="进程事件"></a>进程事件</h2><p><code>process</code> 对象是 <code>EventEmitter</code> 的实例。</p><p><br><br><br><br><br></p><h3 id="beforeExit-事件"><a href="#beforeExit-事件" class="headerlink" title="beforeExit 事件"></a><code>beforeExit</code> 事件</h3><ul><li>当 Node.js <strong>清空其事件循环</strong> 并且<strong>没有其他工作要安排</strong>时，会触发 <code>&#39;beforeExit&#39;</code> 事件。</li><li>通常，Node.js 进程将在没有调度工作时退出，但在 <code>‘beforeExit’</code>事件上注册的监听器可以进行 <strong>异步调用</strong>，从而导致 Node.js 进程继续。</li><li>调用监听器回调函数时，会将 <code>process.exitCode</code> 值作为 唯一参数 传入。</li><li>导致 <strong>显式终止</strong> 的条件，<strong>不会触发</strong> <code>&#39;beforeExit&#39;</code> 事件（调用 <code>process.exit()</code> 或 未捕获的异常）。</li></ul><img src="/2020/02/14/NodeJs-process-进程模块/beforeExit1.png" title="beforeExit"><p>执行结果如下：<br><img src="/2020/02/14/NodeJs-process-进程模块/beforeExit2.png" title="beforeExit"></p>]]></content>
+    <content type="html"><![CDATA[<p><code>process</code> 对象：</p><ul><li>全局变量，提供 当前Node.js 进程相关的信息，并对其进行控制；</li><li>始终可供 Node.js 应用程序使用，无需 <code>require()</code> 。</li></ul><p><br><br><br></p><h2 id="进程事件"><a href="#进程事件" class="headerlink" title="进程事件"></a>进程事件</h2><p><code>process</code> 对象是 <code>EventEmitter</code> 的实例。</p><p><br><br><br><br><br></p><h3 id="beforeExit-事件"><a href="#beforeExit-事件" class="headerlink" title="beforeExit 事件"></a><code>beforeExit</code> 事件</h3><ul><li>当 Node.js <strong>清空其事件循环</strong> 并且<strong>没有其他工作要安排</strong>时，会触发 <code>&#39;beforeExit&#39;</code> 事件。</li><li>通常，Node.js 进程将在没有调度工作时退出，但在 <code>‘beforeExit’</code>事件上注册的监听器可以进行 <strong>异步调用</strong>，从而导致 Node.js 进程继续。</li><li>调用监听器回调函数时，会将 <code>process.exitCode</code> 值作为 唯一参数 传入。</li><li>导致 <strong>显式终止</strong> 的条件，<strong>不会触发</strong> <code>&#39;beforeExit&#39;</code> 事件（调用 <code>process.exit()</code> 或 未捕获的异常）。</li></ul><img src="/2020/02/14/NodeJs-process-进程模块/beforeExit1.png" title="beforeExit"><p>执行结果如下：<br><img src="/2020/02/14/NodeJs-process-进程模块/beforeExit2.png" title="beforeExit"></p><p><br><br><br><br><br></p><h3 id="disconnect-事件"><a href="#disconnect-事件" class="headerlink" title="disconnect 事件"></a><code>disconnect</code> 事件</h3><p>如果使用 IPC 通道衍生 Node.js 进程，则在 IPC 通道关闭时 触发  <code>&#39;disconnect&#39;</code> 事件。</p><blockquote><p><strong>IPC</strong>，InterProcess Communication <strong>进程间通信</strong></p></blockquote>]]></content>
     
     <summary type="html">
     
