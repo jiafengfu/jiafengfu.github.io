@@ -57,32 +57,32 @@
             <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
-                    <span>HOME</span>
+                    <span>主页</span>
                 </a>
             </li>
             <li >
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
-                    <span>TAGS</span>
+                    <span>标签</span>
                 </a>
             </li>
             <li >
                 <a href="/archives">
                     <i class="iconfont icon-guidang2"></i>
-                    <span>ARCHIVES</span>
+                    <span>存档</span>
                 </a>
             </li>
             <li >
                 <a href="/about/">
                     <i class="iconfont icon-guanyu2"></i>
-                    <span>ABOUT</span>
+                    <span>关于</span>
                 </a>
             </li>
             
             <li>
                 <a id="search">
                     <i class="iconfont icon-sousuo1"></i>
-                    <span>SEARCH</span>
+                    <span>搜索</span>
                 </a>
             </li>
             
@@ -101,7 +101,7 @@
         <div class="search-input">
             <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
             <input id="search-input"/>
-            <span id="begin-search">search</span>
+            <span id="begin-search">搜索</span>
         </div>
         <div class="search-result-container" id="search-result-container">
 
@@ -124,16 +124,16 @@
     </div>
 
     <div class="post-meta">
-        <span class="attr">Post：<span>2020-02-14 16:25:10</span></span>
+        <span class="attr">发布于：<span>2020-02-14 16:25:10</span></span>
         
-        <span class="attr">Tags：/
+        <span class="attr">标签：/
         
         <a class="tag" href="/tags/#NodeJs" title="NodeJs">NodeJs</a>
         <span>/</span>
         
         
         </span>
-        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
 </span>
 </span>
     </div>
@@ -145,7 +145,7 @@
 </ul>
 <p><br><br><br></p>
 <h2 id="进程事件"><a href="#进程事件" class="headerlink" title="进程事件"></a>进程事件</h2><p><code>process</code> 对象是 <code>EventEmitter</code> 的实例。</p>
-<p><br><br><br><br><br></p>
+<p><br></p>
 <h3 id="beforeExit-事件"><a href="#beforeExit-事件" class="headerlink" title="beforeExit 事件"></a><code>beforeExit</code> 事件</h3><ul>
 <li>当 Node.js <strong>清空其事件循环</strong> 并且<strong>没有其他工作要安排</strong>时，会触发 <code>&#39;beforeExit&#39;</code> 事件。</li>
 <li>通常，Node.js 进程将在没有调度工作时退出，但在 <code>‘beforeExit’</code>事件上注册的监听器可以进行 <strong>异步调用</strong>，从而导致 Node.js 进程继续。</li>
@@ -153,7 +153,8 @@
 <li>导致 <strong>显式终止</strong> 的条件，<strong>不会触发</strong> <code>&#39;beforeExit&#39;</code> 事件（调用 <code>process.exit()</code> 或 未捕获的异常）。</li>
 </ul>
 <img src="/2020/02/14/NodeJs-process-进程模块/beforeExit1.png" title="beforeExit">
-<p>执行结果如下：<br><img src="/2020/02/14/NodeJs-process-进程模块/beforeExit2.png" title="beforeExit"></p>
+<p>执行结果如下：</p>
+<img src="/2020/02/14/NodeJs-process-进程模块/beforeExit2.png" title="beforeExit">
 <p><br><br><br><br><br></p>
 <h3 id="disconnect-事件"><a href="#disconnect-事件" class="headerlink" title="disconnect 事件"></a><code>disconnect</code> 事件</h3><p>如果使用 IPC 通道衍生 Node.js 进程，则在 IPC 通道关闭时 触发  <code>&#39;disconnect&#39;</code> 事件。</p>
 <blockquote>
