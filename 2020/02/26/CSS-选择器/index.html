@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="符佳凤的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        CSS 选择器 - FU的博客 | FU&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<link rel="alternate" href="/atom.xml" title="FU's Blog" type="application/atom+xml">
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Fashion passes ,   style remains. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Jiafeng Fu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简单选择器"><span class="toc-text">简单选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#标签-类型选择器"><span class="toc-text">标签/类型选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类选择器"><span class="toc-text">类选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#id选择器"><span class="toc-text">id选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通配符选择器"><span class="toc-text">通配符选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性选择器"><span class="toc-text">属性选择器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#伪选择器"><span class="toc-text">伪选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#伪类选择器"><span class="toc-text">伪类选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#伪元素选择器"><span class="toc-text">伪元素选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#before-伪元素"><span class="toc-text">::before 伪元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#after-伪元素"><span class="toc-text">::after 伪元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#first-letter-伪元素"><span class="toc-text">::first-letter 伪元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#first-line-伪元素"><span class="toc-text">::first-line 伪元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cue-伪元素"><span class="toc-text">::cue 伪元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#selection-伪元素"><span class="toc-text">::selection 伪元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slotted-伪元素"><span class="toc-text">::slotted() 伪元素</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#组合选择器"><span class="toc-text">组合选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#后代选择器（A-B）"><span class="toc-text">后代选择器（A B）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#子选择器（A-gt-B）"><span class="toc-text">子选择器（A > B）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#兄弟选择器"><span class="toc-text">兄弟选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#相邻兄弟选择器（A-B）"><span class="toc-text">相邻兄弟选择器（A + B）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通用兄弟选择器（A-B）"><span class="toc-text">通用兄弟选择器（A ~ B）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#选择器分组"><span class="toc-text">选择器分组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#选择器优先级"><span class="toc-text">选择器优先级</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> Fashion passes ,   style remains. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        CSS 选择器
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-02-26 20:36:55</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#CSS" title="CSS">CSS</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <blockquote>
+<p>顾名思义，选择器 就是 <strong>通过表达式，选中<u>一系列的元素</u></strong><br>expression =&gt; Array<element></element></p>
+</blockquote>
+<p><br></p>
+<h1 id="简单选择器"><a href="#简单选择器" class="headerlink" title="简单选择器"></a>简单选择器</h1><h2 id="标签-类型选择器"><a href="#标签-类型选择器" class="headerlink" title="标签/类型选择器"></a>标签/类型选择器</h2><blockquote>
+<p>以 <strong>HTML标签</strong> 作为 CSS规则 的选择器</p>
+</blockquote>
+<p>语法如下：<br><figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">元素 </span><span class="template-variable">&#123; 样式声明 &#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure></p>
+<p><br><br><br></p>
+<h2 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h2><ul>
+<li>通过设置元素的 class属性，为元素指定类名；</li>
+<li>文档中可为 <strong>多个元素</strong> 指定相同的类名；</li>
+<li>类选择器以 <strong>英文句号（.）</strong> 开头</li>
+</ul>
+<p><br><br><br></p>
+<h2 id="id选择器"><a href="#id选择器" class="headerlink" title="id选择器"></a>id选择器</h2><ul>
+<li>通过设置元素的 id属性，为元素指定id；</li>
+<li>每个 id在文档中必须 <strong>唯一</strong>；</li>
+<li>id 选择器以 <strong>井号（#）</strong> 开头。</li>
+</ul>
+<p><br><br><br></p>
+<h2 id="通配符选择器"><a href="#通配符选择器" class="headerlink" title="通配符选择器"></a>通配符选择器</h2><blockquote>
+<p>使用 <strong>星号（*）</strong> 来表示“<strong>任意元素</strong>”</p>
+</blockquote>
+<p>CSS3 中，<u>* 可与 命名空间</u> 组合使用：</p>
+<ul>
+<li><code>ns|*</code> - 匹配 <strong>ns</strong> 命名空间下的所有元素</li>
+<li><code>*|*</code> - 匹配 <strong>所有</strong> 命名空间下的所有元素</li>
+<li><code>|*</code> - 匹配 所有 <strong>没有命名空间</strong> 的元素</li>
+</ul>
+<p>语法如下，选中页面中所有元素：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* &#123; <span class="attribute">property</span>: value; &#125;</span><br></pre></td></tr></table></figure></p>
+<p><br><br><br></p>
+<h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><blockquote>
+<p>通过 <strong>已存在的 属性名 / 属性值</strong> 匹配元素。</p>
+</blockquote>
+<p>语法如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 表示带有以 attr 命名的属性的元素 */</span></span><br><span class="line"><span class="selector-tag">selector</span><span class="selector-attr">[attr]</span> &#123; <span class="attribute">property</span>: value; &#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 表示带有以 attr 命名的属性，且属性值为 value 的元素 */</span></span><br><span class="line"><span class="selector-tag">selector</span><span class="selector-attr">[attr=value]</span> &#123; <span class="attribute">property</span>: value; &#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 表示带有以 attr 命名的属性的元素，且该属性是一个 以空格作为分隔 的值列表，其中至少有一个值为 value */</span></span><br><span class="line"><span class="selector-tag">selector</span><span class="selector-attr">[attr~=value]</span> &#123; <span class="attribute">property</span>: value; &#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 表示带有以 attr 命名的属性的元素，属性值为value 或以‘value-’为前缀（常用来匹配语言简写代码） */</span></span><br><span class="line"><span class="selector-tag">selector</span><span class="selector-attr">[attr|=value]</span> &#123; <span class="attribute">property</span>: value; &#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 表示带有以 attr 命名的属性，且属性值以 value开头的元素 */</span></span><br><span class="line"><span class="selector-tag">selector</span><span class="selector-attr">[attr^=value]</span> &#123; <span class="attribute">property</span>: value; &#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 表示带有以 attr 命名的属性，且属性值以 value结尾的元素 */</span></span><br><span class="line"><span class="selector-tag">selector</span><span class="selector-attr">[attr$=value]</span> &#123; <span class="attribute">property</span>: value; &#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 表示带有以 attr 命名的属性，且属性值 包含 value的元素 */</span></span><br><span class="line"><span class="selector-tag">selector</span><span class="selector-attr">[attr*=value]</span> &#123; <span class="attribute">property</span>: value; &#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 在属性选择器的右方括号前添加一个 用空格隔开的字母 i 或 I ，可在匹配属性值时 忽略大小写 */</span></span><br><span class="line"><span class="selector-tag">selector</span><span class="selector-attr">[attr operator value i]</span> &#123; <span class="attribute">property</span>: value; &#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：与 JS 不同，CSS 可以在 <strong>不使用双引号</strong> 的情况下，直接使用 <strong>带连字符（-）</strong> 的属性名。</p>
+</blockquote>
+<p><br><br><br><br><br></p>
+<h1 id="伪选择器"><a href="#伪选择器" class="headerlink" title="伪选择器"></a>伪选择器</h1><h2 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h2><blockquote>
+<p>CSS 伪类（Pseudo-class）用来 <strong>根据元素状态 改变样式</strong>。</p>
+</blockquote>
+<p>语法如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">selector</span><span class="selector-pseudo">:pseudo-class</span> &#123; <span class="attribute">property</span>: value; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>常用 <strong>伪类列表</strong>：</p>
+<ul>
+<li><strong><code>:link</code></strong></li>
+<li><strong><code>:visited</code></strong></li>
+<li><strong><code>:active</code></strong></li>
+<li><strong><code>:hover</code></strong></li>
+<li><strong><code>:focus</code></strong></li>
+<li><strong><code>:focus-within</code></strong></li>
+<li><strong><code>:first-child</code></strong></li>
+<li><strong><code>:nth-child</code></strong></li>
+<li><strong><code>:nth-last-child</code></strong></li>
+<li><strong><code>:nth-of-type</code></strong></li>
+<li><strong><code>:first-of-type</code></strong></li>
+<li><strong><code>:last-of-type</code></strong></li>
+<li><strong><code>:empty</code></strong></li>
+<li><strong><code>:target</code></strong></li>
+<li><strong><code>:checked</code></strong></li>
+<li><strong><code>:enabled</code></strong></li>
+<li><strong><code>:disabled</code></strong></li>
+</ul>
+<p><br><br><br></p>
+<h2 id="伪元素选择器"><a href="#伪元素选择器" class="headerlink" title="伪元素选择器"></a>伪元素选择器</h2><blockquote>
+<p>CSS 伪元素（Pseudo-elements）是一个 附加至选择器末尾的关键词，用于 <strong>对被选择元素的特定部分 设置特殊效果</strong>。</p>
+</blockquote>
+<p>语法如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">selector</span><span class="selector-pseudo">::pseudo-element</span> &#123; <span class="attribute">property</span>: value; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>CSS 类 可与 伪元素 配合使用：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">selector</span><span class="selector-class">.class</span><span class="selector-pseudo">::pseudo-element</span> &#123; <span class="attribute">property</span>: value; &#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意</strong>：</p>
+<ol>
+<li>一个选择器 只能使用一个伪元素；</li>
+<li>伪元素 必须紧跟在 简单选择器 之后。</li>
+</ol>
+<p><br></p>
+<h3 id="before-伪元素"><a href="#before-伪元素" class="headerlink" title="::before 伪元素"></a>::before 伪元素</h3><blockquote>
+<p>::before创建一个伪元素，作为 <strong>选中的元素的第一个子元素</strong>，常通过 <code>content</code> 属性为元素添加 修饰性的内容。此元素默认为 <strong>行内元素</strong>。</p>
+</blockquote>
+<p>语法如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* CSS3 语法 */</span></span><br><span class="line"><span class="selector-tag">element</span><span class="selector-pseudo">::before</span> &#123; <span class="attribute">property</span>: value; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* CSS2 语法（单冒号，仅用来支持 IE8） */</span></span><br><span class="line"><span class="selector-tag">element</span><span class="selector-pseudo">:before</span> &#123; <span class="attribute">property</span>: value; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 在每一个元素前插入 content内容 */</span></span><br><span class="line"><span class="selector-tag">element</span><span class="selector-pseudo">::before</span> &#123; <span class="attribute">content</span>: <span class="string">"♥"</span>; &#125;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h3 id="after-伪元素"><a href="#after-伪元素" class="headerlink" title="::after 伪元素"></a>::after 伪元素</h3><blockquote>
+<p>::after 创建一个伪元素，作为 <strong>已选中元素的最后一个子元素</strong>，常通过 <code>content</code> 属性为该元素添加装饰内容。这个虚拟元素默认是 <strong>行内元素</strong>。</p>
+</blockquote>
+<p>语法如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* CSS3 语法 */</span></span><br><span class="line"><span class="selector-tag">element</span><span class="selector-pseudo">::after</span> &#123; <span class="attribute">property</span>: value; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* CSS2 语法（用来支持 IE8） */</span></span><br><span class="line"><span class="selector-tag">element</span><span class="selector-pseudo">:after</span> &#123; <span class="attribute">property</span>: value; &#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：由 <code>::before</code> 和 <code>::after</code> 生成的伪元素 <strong>包含在元素格式框内</strong>，因此 <strong>不能应用在 替换元素</strong>（如 <code>&lt;img&gt;</code>、<code>&lt;br&gt;</code> 元素）上。</p>
+</blockquote>
+<p><br></p>
+<h3 id="first-letter-伪元素"><a href="#first-letter-伪元素" class="headerlink" title="::first-letter 伪元素"></a>::first-letter 伪元素</h3><blockquote>
+<p>匹配 <strong>块级元素的第一行的第一个字母</strong>，且文字所处的行之前 没有其他内容（图片、内联表格等）。</p>
+</blockquote>
+<p>语法如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">element</span><span class="selector-pseudo">::first-letter</span> &#123; <span class="attribute">property</span>: value; &#125;</span><br></pre></td></tr></table></figure></p>
+<p> 可用属性：</p>
+<ul>
+<li><code>font properties</code>、</li>
+<li><code>color properties</code>、</li>
+<li><code>background properties</code>、</li>
+<li><code>margin properties</code>、</li>
+<li><code>padding properties</code>、</li>
+<li><code>border properties</code>、</li>
+<li><code>text-decoration</code>、</li>
+<li><code>vertical-align</code>（<em>float 为 none 时</em>）、</li>
+<li><code>text-transform</code>、</li>
+<li><code>line-height</code>、</li>
+<li><code>float</code>、</li>
+<li><code>clear</code></li>
+</ul>
+<p><br></p>
+<h3 id="first-line-伪元素"><a href="#first-line-伪元素" class="headerlink" title="::first-line 伪元素"></a>::first-line 伪元素</h3><blockquote>
+<p>用于向 <strong>文本的首行</strong> 设置特殊样式，只能用于 <strong>块级元素</strong>。</p>
+</blockquote>
+<p>语法如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">element</span><span class="selector-pseudo">::first-line</span> &#123; <span class="attribute">property</span>: value; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>可用属性：</p>
+<ul>
+<li><code>font</code>、</li>
+<li><code>color</code>、</li>
+<li><code>background</code>、</li>
+<li><code>word-spacing</code>、</li>
+<li><code>letter-spacing</code>、</li>
+<li><code>text-decoration</code>、</li>
+<li><code>vertical-align</code>、</li>
+<li><code>text-transform</code>、</li>
+<li><code>line-height</code>、</li>
+<li><code>clear</code></li>
+</ul>
+<p><br></p>
+<h3 id="cue-伪元素"><a href="#cue-伪元素" class="headerlink" title="::cue 伪元素"></a>::cue 伪元素</h3><blockquote>
+<p>::cue 匹配所选元素中的 WebVTT（网络视频轨道格式） 提示，用于 在VTT 轨道媒体中使用字幕。</p>
+</blockquote>
+<p>语法如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">::cue | ::cue( &lt;selector&gt; ) &#123; property: value; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>设置提示样式，使文本为白色、背景为半透明黑盒，示例如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">::cue</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>( 0, 0, 0, 0.6 );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>延伸：<strong>WebVTT</strong> = Web Video Text Tracks Format ，<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API" target="_blank" rel="noopener">查看详情</a>。</p>
+</blockquote>
+<p><br></p>
+<h3 id="selection-伪元素"><a href="#selection-伪元素" class="headerlink" title="::selection 伪元素"></a>::selection 伪元素</h3><blockquote>
+<p>::selection 应用于 文档中被用户高亮的部分（被鼠标/其他选择设备 选中的部分）</p>
+</blockquote>
+<p>语法如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">::selection</span> &#123; <span class="attribute">property</span>: value; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>可用属性：</p>
+<ul>
+<li>color</li>
+<li>background-color</li>
+<li>cursor</li>
+<li>caret-color</li>
+<li>outline</li>
+<li>text-decoration 等相关属性</li>
+<li>text-emphasis-color</li>
+<li>text-shadow</li>
+</ul>
+<p>示例如下：<br><img src="/2020/02/26/CSS-选择器/selection伪元素.png" title="selection伪元素"></p>
+<img src="/2020/02/26/CSS-选择器/selection伪元素2.png" title="selection伪元素">
+<p><br></p>
+<h3 id="slotted-伪元素"><a href="#slotted-伪元素" class="headerlink" title="::slotted() 伪元素"></a>::slotted() 伪元素</h3><blockquote>
+<p>::slotted() 用于选定 <strong>被放置在 HTML模板中的元素</strong>。</p>
+</blockquote>
+<p>语法如下：<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">::slotted( &lt;compound-selector-list&gt; )  &#123; property:</span> value; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>注意：</p>
+<ol>
+<li>IE 浏览器不支持；</li>
+<li>仅适用于 影子节点树（Shadow Dom）;</li>
+<li>只选择 实际的元素节点，而不包括文本节点；</li>
+<li>延伸阅读：<a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM" target="_blank" rel="noopener">Shadow DOM</a>。</li>
+</ol>
+<p><br><br><br><br><br></p>
+<h1 id="组合选择器"><a href="#组合选择器" class="headerlink" title="组合选择器"></a>组合选择器</h1><h2 id="后代选择器（A-B）"><a href="#后代选择器（A-B）" class="headerlink" title="后代选择器（A B）"></a>后代选择器（A B）</h2><blockquote>
+<p>匹配元素A的任一 <strong>后代元素E</strong>  (后代节点指A的子节点，子节点的子节点，以此类推)</p>
+</blockquote>
+<p><br><br><br></p>
+<h2 id="子选择器（A-gt-B）"><a href="#子选择器（A-gt-B）" class="headerlink" title="子选择器（A &gt; B）"></a>子选择器（A &gt; B）</h2><blockquote>
+<p>匹配元素A的任一 <strong>子元素E</strong> (也就是 <strong>直系后代</strong>)</p>
+</blockquote>
+<p><br><br><br></p>
+<h2 id="兄弟选择器"><a href="#兄弟选择器" class="headerlink" title="兄弟选择器"></a>兄弟选择器</h2><h3 id="相邻兄弟选择器（A-B）"><a href="#相邻兄弟选择器（A-B）" class="headerlink" title="相邻兄弟选择器（A + B）"></a>相邻兄弟选择器（A + B）</h3><blockquote>
+<p>匹配 元素A的任一 <strong>下一个兄弟元素B</strong></p>
+</blockquote>
+<p><br></p>
+<h3 id="通用兄弟选择器（A-B）"><a href="#通用兄弟选择器（A-B）" class="headerlink" title="通用兄弟选择器（A ~ B）"></a>通用兄弟选择器（A ~ B）</h3><blockquote>
+<p>匹配 A元素后面的 <strong>拥有共同父元素的兄弟元素B</strong></p>
+</blockquote>
+<p>示例如下：<br><img src="/2020/02/26/CSS-选择器/关系选择器.png" title="关系选择器示例"></p>
+<img src="/2020/02/26/CSS-选择器/关系选择器2.png" title="关系选择器示例">
+<p><br><br><br><br><br></p>
+<h1 id="选择器分组"><a href="#选择器分组" class="headerlink" title="选择器分组"></a>选择器分组</h1><p>相同样式的选择器名称，用 <strong>逗号分隔</strong> ：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span> &#123;</span><br><span class="line">    <span class="comment">/* some properties */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br><br><br><br><br></p>
+<h1 id="选择器优先级"><a href="#选择器优先级" class="headerlink" title="选择器优先级"></a>选择器优先级</h1><blockquote>
+<ol>
+<li>多个规则 为同一元素 指定相同属性，则拥有 <strong>更高确定度</strong> 的选择器 优先级更高；</li>
+<li>可将多个选择器组合 来提高选择器的确定度；</li>
+<li>若元素的CSS规则冲突，且它们的确定度相同，则 <strong>后出现的规则</strong> 优先级高。</li>
+</ol>
+</blockquote>
+<p><strong>id 选择器 &gt; 类选择器 &gt; 标签选择器</strong></p>
+<p><br><br><br><br><br></p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/jiafengfu">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
